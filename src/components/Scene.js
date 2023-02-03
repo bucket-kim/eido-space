@@ -4,6 +4,7 @@ import "../App.css";
 import * as THREE from "three";
 import Models from "./Models";
 import { Suspense } from "react";
+import { Bloom, EffectComposer } from "@react-three/postprocessing";
 
 const Rig = () => {
   const { camera, mouse } = useThree();
@@ -25,11 +26,18 @@ const Scene = () => {
         shadows
         camera={{
           fov: 45,
-          near: 0.1,
-          far: 1000,
-          position: [0, 0, 6],
+          position: [-5, 5, 6],
         }}
       >
+        <color args={[0x1f1e1c]} attach="background" />
+        <ambientLight intensity={0.5} />
+        <spotLight position={[5, 5, -10]} angle={0.15} penumbra={1} />
+        <pointLight position={[-10, -10, -10]} />
+
+        <Suspense>
+          <Models position={[0, 0.25, 0]} scale={1.5} />
+        </Suspense>
+        {/* <Environment files="/images/smallStudio.hdr" background /> */}
         <OrbitControls
           enabled={true}
           minPolarAngle={0}
@@ -37,34 +45,16 @@ const Scene = () => {
           maxDistance={10}
           minDistance={1}
         />
-        <Environment preset="warehouse" background={false} />
-        <pointLight
-          name="Point Light"
-          intensity={4}
-          decay={20}
-          distance={4222}
-          color="#ada3fe"
-          position={[-10, 10, 10]}
-        />
-        <directionalLight
-          name="Directional Light"
-          castShadow
-          intensity={0.5}
-          color="#ffffff"
-          position={[-1, 6, 1]}
-        />
-        <Suspense>
-          <Models />
-        </Suspense>
-        <mesh
-          rotation={[-Math.PI / 2, 0, 0]}
-          receiveShadow
-          position={[0, -0.65, 0]}
-          scale={100}
-        >
-          <planeGeometry />
-          <shadowMaterial opacity={0.2} />
-        </mesh>
+        <EffectComposer>
+          <Bloom
+            mipmapBlur
+            intensity={1}
+            levels={9}
+            luminanceThreshold={1}
+            luminanceSmoothing={1}
+          />
+        </EffectComposer>
+
         {/* <Rig /> */}
       </Canvas>
     </div>
