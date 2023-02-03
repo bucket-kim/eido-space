@@ -48,7 +48,7 @@ const Scene = () => {
         <EffectComposer>
           <Bloom
             mipmapBlur
-            intensity={1}
+            intensity={0.25}
             levels={9}
             luminanceThreshold={1}
             luminanceSmoothing={1}

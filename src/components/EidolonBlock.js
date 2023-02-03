@@ -7,21 +7,15 @@ import * as THREE from "three";
 
 const EidolonBlock = (props) => {
   const { nodes } = useGLTF("/models/eidolon.glb");
-  // const { nodes } = useGLTF("/models/ethereum.glb");
-
-  const baseColor = useLoader(
-    TextureLoader,
-    "/images/crystal/Eidolon_BaseColor.png"
-  );
 
   const roughness = useLoader(
     TextureLoader,
-    "/images/crystal/Eidolon_Roughness.png"
+    "/images/crystal/eidolon_Roughness.png"
   );
-  const normal = useLoader(TextureLoader, "/images/crystal/Eidolon_Normal.png");
+  const normal = useLoader(TextureLoader, "/images/crystal/eidolon_Normal.png");
   const emission = useLoader(
     TextureLoader,
-    "/images/crystal/Eidolon_Emissive.png"
+    "/images/crystal/eidolon_Emissive.png"
   );
 
   roughness.flipY = false;
@@ -53,6 +47,8 @@ const EidolonBlock = (props) => {
           clearcoat={1}
           normalMap={normal}
           clearcoatNormalMap={normal}
+          emissiveMap={emission}
+          emissiveIntensity={10}
           alphaMap={emission}
           transparent={true}
           toneMapped={false}
