@@ -24,17 +24,19 @@ function App() {
         </div>
       </div>
       <div className="absolute bottom-0 w-full flex justify-between items-center px-4 pb-1 text-white">
-        <div className="flex">
+        <div className="flex sm:pl-2 mt-8">
           <div className="border-2 border-white h-4 w-4 rounded-full"></div>
           <div className="border-2 border-white h-4 w-4 rounded-full translate-x-1"></div>
           <div className="border-2 border-white h-4 w-4 rounded-full translate-x-2"></div>
           <div className="border-2 border-white h-4 w-4 rounded-full translate-x-3"></div>
         </div>
-        <div className="pb-2">
-          <button className="border-2  py-4 w-44 items-center mr-4">
+        <div className="pb-2 sm:flex flex-col pb-3.5">
+          <button className="border-2  py-4 w-44 mr-4 sm:w-32 text-sm py-3 mr-0 mb-1">
             SOLD OUT
           </button>
-          <button className="border-2 py-4 w-44 ">BUY ON STOCK</button>
+          <button className="border-2 py-4 w-44 sm:w-32 text-sm py-3 ">
+            BUY ON STOCK
+          </button>
         </div>
       </div>
       <Scene />

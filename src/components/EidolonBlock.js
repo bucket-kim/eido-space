@@ -1,12 +1,11 @@
 import React from "react";
-import { useGLTF, MeshRefractionMaterial } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 import { useLoader } from "@react-three/fiber";
-import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import * as THREE from "three";
 
 const EidolonBlock = (props) => {
-  const { nodes } = useGLTF("/models/eidolon.glb");
+  const { nodes } = useGLTF("/models/eidolon2.glb");
 
   const roughness = useLoader(
     TextureLoader,
@@ -25,18 +24,9 @@ const EidolonBlock = (props) => {
   return (
     <>
       <mesh castShadow geometry={nodes.Eidolon_Logo.geometry} {...props}>
-        {/* <MeshRefractionMaterial
-          envMap={props.texture}
-          bounces={3}
-          fresnel={1}
-          ior={2.42}
-          fastChroma={true}
-          toneMapped={false}
-        /> */}
         <meshPhysicalMaterial
           color={0xffffff}
           metalness={0}
-          opacity={0.5}
           roughnessMap={roughness}
           transmission={1}
           thickness={2.42}
@@ -45,12 +35,10 @@ const EidolonBlock = (props) => {
           envMap={props.texture}
           envMapIntensity={10}
           clearcoat={1}
-          normalMap={normal}
-          clearcoatNormalMap={normal}
-          emissiveMap={emission}
-          emissiveIntensity={10}
-          alphaMap={emission}
           transparent={true}
+          opacity={0.75}
+          clearcoatNormalMap={normal}
+          alphaMap={emission}
           toneMapped={false}
         />
       </mesh>

@@ -37,7 +37,7 @@ const Scene = () => {
         <Suspense>
           <Models position={[0, 0.25, 0]} scale={1.5} />
         </Suspense>
-        {/* <Environment files="/images/smallStudio.hdr" background /> */}
+        <Environment files="/images/royal_esplanade.hdr" backgroud={false} />
         <OrbitControls
           enabled={true}
           minPolarAngle={0}
