@@ -33,7 +33,7 @@ const EidolonBlock = (props) => {
           ior={2.42}
           reflectivity={0.5}
           envMap={props.texture}
-          envMapIntensity={10}
+          envMapIntensity={5}
           clearcoat={1}
           transparent={true}
           opacity={0.75}

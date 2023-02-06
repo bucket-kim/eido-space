@@ -39,6 +39,7 @@ const Models = (props) => {
             variants={{
               hover: { scale: 2.25 },
               rest: { scale: 2 },
+              press: { scale: 2.5 },
             }}
             onHoverStart={() => {
               isHover(true);
