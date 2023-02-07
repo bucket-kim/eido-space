@@ -1,48 +1,36 @@
-import React from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import { useGLTF } from "@react-three/drei";
+import { motion } from "framer-motion-3d";
+import DiamondMaterial from "./DiamondMaterial";
+import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
 import { useLoader } from "@react-three/fiber";
-import { TextureLoader } from "three/src/loaders/TextureLoader";
 import * as THREE from "three";
+import Ceramic from "./Ceramic";
+import gsap from "gsap";
 
 const EidolonBlock = (props) => {
+  const [setTap, isSetTap] = useState(false);
+
   const { nodes } = useGLTF("/models/eidolon2.glb");
 
-  const roughness = useLoader(
-    TextureLoader,
-    "/images/crystal/eidolon_Roughness.png"
-  );
-  const normal = useLoader(TextureLoader, "/images/crystal/eidolon_Normal.png");
-  const emission = useLoader(
-    TextureLoader,
-    "/images/crystal/eidolon_Emissive.png"
-  );
+  const texture = useLoader(RGBELoader, "/images/royal_esplanade.hdr");
+  texture.mapping = THREE.EquirectangularRefractionMapping;
+  texture.encoding = THREE.sRGBEncoding;
 
-  roughness.flipY = false;
-  normal.flipY = false;
-  emission.flipY = false;
+  const diamond = useRef();
+  const ceramic = useRef();
 
   return (
-    <>
+    <group
+      onClick={() => {
+        isSetTap(!setTap);
+      }}
+    >
       <mesh castShadow geometry={nodes.Eidolon_Logo.geometry} {...props}>
-        <meshPhysicalMaterial
-          color={0xffffff}
-          metalness={0}
-          roughnessMap={roughness}
-          transmission={1}
-          thickness={2.42}
-          ior={2.42}
-          reflectivity={0.5}
-          envMap={props.texture}
-          envMapIntensity={5}
-          clearcoat={1}
-          transparent={true}
-          opacity={0.75}
-          clearcoatNormalMap={normal}
-          alphaMap={emission}
-          toneMapped={false}
-        />
+        <DiamondMaterial texture={texture} ref={diamond} />
+        {/* <Ceramic ref={ceramic} /> */}
       </mesh>
-    </>
+    </group>
   );
 };
 

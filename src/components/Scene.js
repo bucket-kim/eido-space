@@ -18,7 +18,7 @@ const Rig = () => {
   );
 };
 
-const Scene = () => {
+const Scene = (props) => {
   return (
     <div className="scene">
       <Canvas
@@ -26,7 +26,7 @@ const Scene = () => {
         shadows
         camera={{
           fov: 45,
-          position: [-5, 5, 6],
+          position: [0, 1, 6],
         }}
       >
         <color args={[0x1f1e1c]} attach="background" />
@@ -35,7 +35,7 @@ const Scene = () => {
         <pointLight position={[-10, -10, -10]} />
 
         <Suspense>
-          <Models position={[0, 0.25, 0]} scale={1.5} />
+          <Models />
         </Suspense>
         <Environment files="/images/royal_esplanade.hdr" backgroud={false} />
         <OrbitControls
