@@ -3,7 +3,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import "../App.css";
 import * as THREE from "three";
 import Models from "./Models";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 
 const Rig = () => {

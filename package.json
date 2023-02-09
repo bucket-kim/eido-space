@@ -23,6 +23,7 @@
     "react-dom": "^18.2.0",
     "react-live-clock": "^6.1.5",
     "react-scripts": "5.0.1",
+    "react-type-animation": "^2.1.2",
     "three": "^0.148.0",
     "vercel": "^28.13.1",
     "web-vitals": "^2.1.4"

@@ -6,6 +6,9 @@ module.exports = {
     screens: {
       "sm": { "max": "390px" },
     },
+    fontFamily: {
+      "NimbusSansL": ["NimbusSansL", "sans-serif"],
+    },
   },
   plugins: [],
 };

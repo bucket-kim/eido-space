@@ -1,13 +1,45 @@
 import { useFrame, useLoader } from "@react-three/fiber";
 import { useLayoutEffect, useRef, useState } from "react";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
+import { useTexture } from "@react-three/drei";
 import EidolonBlock from "./EidolonBlock";
 import * as THREE from "three";
-import { Float } from "@react-three/drei";
 import { gsap } from "gsap";
 
 const Models = (props) => {
   const ref = useRef();
+
+  const [colorMap, normalMap, roughnessMap, metalnessMap] = useTexture([
+    "/images/crystal/eidolon_BaseColor.png",
+    "/images/crystal/eidolon_Normal.png",
+    "/images/crystal/eidolon_Roughness.png",
+    "/images/crystal/eidolon_Metalness.png",
+  ]);
+
+  const diamond = [
+    "/images/crystal/eidolon_BaseColor.png",
+    "/images/crystal/eidolon_Normal.png",
+    "/images/crystal/eidolon_Roughness.png",
+    "/images/crystal/eidolon_Metalness.png",
+  ];
+
+  const ceramic = [
+    "/images/ceramic/ceramic_BaseColor.png",
+    "/images/ceramic/eidolon_Normal.png",
+    "/images/ceramic/eidolon_Roughness.png",
+    "/images/ceramic/eidolon_Metalness.png",
+  ];
+
+  const [currentTexture, setCurrentTexture] = useState(diamond);
+
+  const handleChange = (e, texture) => {
+    e.preventDefault();
+    if (texture === "diamond") {
+      setCurrentTexture(diamond);
+    } else {
+      setCurrentTexture(ceramic);
+    }
+  };
 
   const texture = useLoader(RGBELoader, "/images/royal_esplanade.hdr");
   texture.mapping = THREE.EquirectangularRefractionMapping;
@@ -103,21 +135,54 @@ const Models = (props) => {
         onPointerLeave={() => {
           setIsHover(false);
         }}
+        onClick={() => {
+          console.log(ref.current);
+        }}
       >
         <mesh ref={box1} position={[0.396422, 0.195501, 0]}>
-          <EidolonBlock />
+          <EidolonBlock
+            texture={texture}
+            colorMap={colorMap}
+            roughnessMap={roughnessMap}
+            normalMap={normalMap}
+            metalnessMap={metalnessMap}
+          />
         </mesh>
         <mesh ref={box2} position={[-0.388236, 0.595516, 0]}>
-          <EidolonBlock />
+          <EidolonBlock
+            texture={texture}
+            colorMap={colorMap}
+            roughnessMap={roughnessMap}
+            normalMap={normalMap}
+            metalnessMap={metalnessMap}
+          />
         </mesh>
         <mesh ref={box3} position={[0.396422, 0.977503, 0]}>
-          <EidolonBlock />
+          <EidolonBlock
+            texture={texture}
+            colorMap={colorMap}
+            roughnessMap={roughnessMap}
+            normalMap={normalMap}
+            metalnessMap={metalnessMap}
+          />
         </mesh>
         <mesh ref={box4} position={[-0.388236, 1.3685, 0]}>
-          <EidolonBlock />
+          <EidolonBlock
+            texture={texture}
+            colorMap={colorMap}
+            roughnessMap={roughnessMap}
+            normalMap={normalMap}
+            metalnessMap={metalnessMap}
+          />
         </mesh>
         <mesh ref={box5} position={[0.396422, 1.75951, 0]}>
-          <EidolonBlock />
+          <EidolonBlock
+            texture={texture}
+            colorMap={colorMap}
+            roughnessMap={roughnessMap}
+            normalMap={normalMap}
+            metalnessMap={metalnessMap}
+          />
         </mesh>
       </group>
     </>
