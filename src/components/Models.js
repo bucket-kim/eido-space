@@ -1,7 +1,7 @@
 import { useFrame, useLoader } from "@react-three/fiber";
 import { useLayoutEffect, useRef, useState } from "react";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
-import { useTexture } from "@react-three/drei";
+import { Float, useTexture } from "@react-three/drei";
 import EidolonBlock from "./EidolonBlock";
 import * as THREE from "three";
 import { gsap } from "gsap";
@@ -61,7 +61,7 @@ const Models = (props) => {
     if (isHover) {
       gsap.to(box1.current.position, {
         x: 0.6,
-        y: 0,
+        y: 0.2,
         z: 0,
         duration: 0.3,
       });
@@ -71,6 +71,7 @@ const Models = (props) => {
         z: 0,
         duration: 0.3,
       });
+
       gsap.to(box3.current.position, {
         x: 0.6,
         y: 1,
