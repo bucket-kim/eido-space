@@ -14,42 +14,42 @@ const Logo = () => {
         }}
       >
         <div className="flex">
-          <div className="bg-white w-3 h-2.5 translate-x-6"></div>
+          <div className="bg-white w-2.5 h-2.5 translate-x-5"></div>
           <motion.div
-            className="bg-white w-3 h-2.5 translate-x-6"
-            animate={{ y: isHover ? 10 : 0, x: 24 }}
+            className="bg-white w-2.5 h-2.5 translate-x-5"
+            animate={{ y: isHover ? 10 : 0, x: 20 }}
             transition={{ type: "easeInOut", duration: 0.2 }}
           ></motion.div>
         </div>
         <div className="flex">
           <motion.div
-            className="bg-white w-3 h-2.5 translate-x-6"
+            className="bg-white w-2.5 h-2.5 translate-x-5"
             animate={{ y: isHover ? -10 : 0 }}
             transition={{ type: "easeInOut", duration: 0.2 }}
           ></motion.div>
-          <div className="bg-white w-3 h-2.5"></div>
+          <div className="bg-white w-2.5 h-2.5"></div>
         </div>
         <div className="flex">
-          <div className="bg-white w-3 h-2.5 translate-x-6"></div>
+          <div className="bg-white w-2.5 h-2.5 translate-x-5"></div>
           <motion.div
-            className="bg-white w-3 h-2.5 translate-x-6"
-            animate={{ y: isHover ? 10 : 0, x: 24 }}
+            className="bg-white w-2.5 h-2.5 translate-x-5"
+            animate={{ y: isHover ? 10 : 0, x: 20 }}
             transition={{ type: "easeInOut", duration: 0.2 }}
           ></motion.div>
         </div>
         <div className="flex">
           <motion.div
-            className="bg-white w-3 h-2.5 translate-x-6"
+            className="bg-white w-2.5 h-2.5 translate-x-5"
             animate={{ y: isHover ? -10 : 0 }}
             transition={{ type: "easeInOut", duration: 0.2 }}
           ></motion.div>
-          <div className="bg-white w-3 h-2.5"></div>
+          <div className="bg-white w-2.5 h-2.5"></div>
         </div>
         <div className="flex">
-          <div className="bg-white w-3 h-2.5 translate-x-6"></div>
+          <div className="bg-white w-2.5 h-2.5 translate-x-5"></div>
           <motion.div
-            className="bg-white w-3 h-2.5 translate-x-6"
-            animate={{ y: isHover ? 10 : 0, x: 24 }}
+            className="bg-white w-2.5 h-2.5 "
+            animate={{ y: isHover ? 10 : 0, x: 20 }}
             transition={{ type: "easeInOut", duration: 0.2 }}
           ></motion.div>
         </div>

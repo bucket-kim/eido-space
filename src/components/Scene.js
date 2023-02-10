@@ -30,7 +30,7 @@ const Scene = () => {
             position: [0, 1, 6],
           }}
         >
-          <color args={[0x1f1e1c]} attach="background" />
+          <color args={[0x000000]} attach="background" />
           <ambientLight intensity={0.5} />
           <spotLight position={[5, 5, -10]} angle={0.15} penumbra={1} />
           <pointLight position={[-10, -10, -10]} />
