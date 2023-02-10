@@ -30,7 +30,7 @@ function MainPage(props) {
               <TypeAnimation
                 sequence={[3950, "connect@eidolon.com"]}
                 cursor={false}
-                wrapper={"span"}
+                wrapper={"a"}
                 className={"indent-1 text-blue-500"}
               />
             </div>
@@ -52,16 +52,25 @@ function MainPage(props) {
               sequence={[7000, "Join the collective"]}
               cursor={false}
               wrapper={"div"}
-              className={""}
+              className={"text-red-500"}
               speed={60}
             />
-            <TypeAnimation
-              sequence={[8000, "Follow us on social media @eidolon "]}
-              cursor={false}
-              wrapper={"div"}
-              className={""}
-              speed={60}
-            />
+            <div className="flex">
+              <TypeAnimation
+                sequence={[8000, "Follow us on social media"]}
+                cursor={false}
+                wrapper={"div"}
+                className={""}
+                speed={60}
+              />
+              <TypeAnimation
+                sequence={[8950, " @eidolon"]}
+                cursor={false}
+                wrapper={"a"}
+                className={"indent-1 text-yellow-300"}
+                speed={60}
+              />
+            </div>
           </div>
         </div>
         <Scene />
