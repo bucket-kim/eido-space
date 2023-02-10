@@ -11,7 +11,7 @@ function MainPage(props) {
   return (
     <>
       <div className="h-screen">
-        <div className="w-full flex justify-between text-white text-[12px] px-24 pt-16  font-NimbusSansL absolute z-10">
+        <div className="w-full flex justify-between text-white text-[12px] px-24 pt-[6em]  font-NimbusSansL absolute z-10">
           <Logo />
 
           <div className="flex flex-col items-end ">
@@ -75,7 +75,7 @@ function MainPage(props) {
         </div>
         <Scene />
         <motion.div
-          className="w-full text-white flex justify-between absolute bottom-0 px-24 pb-6 
+          className="w-full text-white flex justify-between absolute bottom-0 px-24 pb-8 text-[12px]
            "
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
