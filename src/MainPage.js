@@ -5,8 +5,9 @@ import { TypeAnimation } from "react-type-animation";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-function MainPage() {
+function MainPage(props) {
   const [isHover, setIsHover] = useState(false);
+
   return (
     <>
       <div className="h-screen">
@@ -96,7 +97,9 @@ function MainPage() {
               </motion.div>
             </div>
           </motion.div>
-          <button className="pb-[3em]">Buy</button>
+          <button className="pb-[3em]" onClick={props.handleClick}>
+            Buy
+          </button>
         </motion.div>
       </div>
     </>
