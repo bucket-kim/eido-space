@@ -1,7 +1,7 @@
 import { useFrame, useLoader } from "@react-three/fiber";
 import { useLayoutEffect, useRef, useState } from "react";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
-import { Float, useTexture } from "@react-three/drei";
+import { useTexture } from "@react-three/drei";
 import EidolonBlock from "./EidolonBlock";
 import * as THREE from "three";
 import { gsap } from "gsap";
@@ -16,30 +16,13 @@ const Models = (props) => {
     "/images/crystal/eidolon_Metalness.png",
   ]);
 
-  const diamond = [
-    "/images/crystal/eidolon_BaseColor.png",
-    "/images/crystal/eidolon_Normal.png",
-    "/images/crystal/eidolon_Roughness.png",
-    "/images/crystal/eidolon_Metalness.png",
-  ];
-
-  const ceramic = [
-    "/images/ceramic/ceramic_BaseColor.png",
-    "/images/ceramic/eidolon_Normal.png",
-    "/images/ceramic/eidolon_Roughness.png",
-    "/images/ceramic/eidolon_Metalness.png",
-  ];
-
-  const [currentTexture, setCurrentTexture] = useState(diamond);
-
-  const handleChange = (e, texture) => {
-    e.preventDefault();
-    if (texture === "diamond") {
-      setCurrentTexture(diamond);
-    } else {
-      setCurrentTexture(ceramic);
-    }
-  };
+  const [ceramicColor, ceramicNormal, ceramicRoughness, ceramicMetalness] =
+    useTexture([
+      "/images/ceramic/ceramic_BaseColor.png",
+      "/images/ceramic/ceramic_Normal.png",
+      "/images/ceramic/ceramic_Roughness.png",
+      "/images/ceramic/ceramic_Metalness.png",
+    ]);
 
   const texture = useLoader(RGBELoader, "/images/royal_esplanade.hdr");
   texture.mapping = THREE.EquirectangularRefractionMapping;
@@ -135,9 +118,6 @@ const Models = (props) => {
         }}
         onPointerLeave={() => {
           setIsHover(false);
-        }}
-        onClick={() => {
-          console.log(ref.current);
         }}
       >
         <mesh ref={box1} position={[0.396422, 0.195501, 0]}>

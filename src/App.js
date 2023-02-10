@@ -2,8 +2,11 @@ import "./App.css";
 import Logo from "./components/Logo";
 import Scene from "./components/Scene";
 import { TypeAnimation } from "react-type-animation";
+import { useState } from "react";
+import { motion } from "framer-motion";
 
 function App() {
+  const [isHover, setIsHover] = useState(false);
   return (
     <>
       <div className="h-full ">
@@ -37,7 +40,6 @@ function App() {
               className={""}
               speed={60}
             />
-            {/* <div>Created using Web3</div> */}
             <TypeAnimation
               sequence={[6500, "Axe coming 5.9.2024"]}
               cursor={false}
@@ -61,14 +63,39 @@ function App() {
             />
           </div>
         </div>
-        <div className="w-full absolute bottom-0 text-white flex justify-between p-8 pb-[6em]">
-          <div className="">
-            <div>#0001</div>
-            {/* <div>Name of the piece</div>
-            <div>By Eidolon</div> */}
-          </div>
-          <button>Buy</button>
-        </div>
+        <motion.div
+          className="w-full absolute bottom-0 text-white flex justify-between p-8 pb-[3em]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+        >
+          <motion.div
+            whileHover={{ y: -50 }}
+            transition={{ type: "easeInOut" }}
+            onHoverStart={() => {
+              setIsHover(true);
+            }}
+            onHoverEnd={() => {
+              setIsHover(false);
+            }}
+          >
+            #0001
+            <div>
+              <motion.div
+                animate={{ opacity: isHover ? 1 : 0 }}
+                transition={{ duration: 0.15, type: "easeInOut" }}
+              >
+                Name of the piece
+              </motion.div>
+              <motion.div
+                animate={{ opacity: isHover ? 1 : 0 }}
+                transition={{ duration: 0.15, type: "easeInOut" }}
+              >
+                By Eidolon
+              </motion.div>
+            </div>
+          </motion.div>
+          <button className="pb-[3em]">Buy</button>
+        </motion.div>
       </div>
       <Scene />
     </>

@@ -3,7 +3,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import "../App.css";
 import * as THREE from "three";
 import Models from "./Models";
-import { Suspense, useState } from "react";
+import { Suspense } from "react";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 
 const Rig = () => {
@@ -18,46 +18,48 @@ const Rig = () => {
   );
 };
 
-const Scene = (props) => {
+const Scene = () => {
   return (
-    <div className="scene">
-      <Canvas
-        gl={{ antialias: true }}
-        shadows
-        camera={{
-          fov: 45,
-          position: [0, 1, 6],
-        }}
-      >
-        <color args={[0x1f1e1c]} attach="background" />
-        <ambientLight intensity={0.5} />
-        <spotLight position={[5, 5, -10]} angle={0.15} penumbra={1} />
-        <pointLight position={[-10, -10, -10]} />
+    <>
+      <div className="scene">
+        <Canvas
+          gl={{ antialias: true }}
+          shadows
+          camera={{
+            fov: 45,
+            position: [0, 1, 6],
+          }}
+        >
+          <color args={[0x1f1e1c]} attach="background" />
+          <ambientLight intensity={0.5} />
+          <spotLight position={[5, 5, -10]} angle={0.15} penumbra={1} />
+          <pointLight position={[-10, -10, -10]} />
 
-        <Suspense>
-          <Models />
-        </Suspense>
-        <Environment files="/images/royal_esplanade.hdr" backgroud={false} />
-        <OrbitControls
-          enabled={true}
-          minPolarAngle={0}
-          maxPolarAngle={Math.PI / 1.5}
-          maxDistance={10}
-          minDistance={1}
-        />
-        <EffectComposer>
-          <Bloom
-            mipmapBlur
-            intensity={0.25}
-            levels={9}
-            luminanceThreshold={1}
-            luminanceSmoothing={1}
+          <Suspense>
+            <Models />
+          </Suspense>
+          <Environment files="/images/royal_esplanade.hdr" backgroud={false} />
+          <OrbitControls
+            enabled={true}
+            minPolarAngle={0}
+            maxPolarAngle={Math.PI / 1.5}
+            maxDistance={10}
+            minDistance={1}
           />
-        </EffectComposer>
+          <EffectComposer>
+            <Bloom
+              mipmapBlur
+              intensity={0.25}
+              levels={9}
+              luminanceThreshold={1}
+              luminanceSmoothing={1}
+            />
+          </EffectComposer>
 
-        {/* <Rig /> */}
-      </Canvas>
-    </div>
+          {/* <Rig /> */}
+        </Canvas>
+      </div>
+    </>
   );
 };
 
