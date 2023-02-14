@@ -5,7 +5,7 @@ import { TypeAnimation } from "react-type-animation";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-function MainPage(props) {
+function Overlay(props) {
   const [isHover, setIsHover] = useState(false);
 
   return (
@@ -115,4 +115,4 @@ function MainPage(props) {
   );
 }
 
-export default MainPage;
+export default Overlay;

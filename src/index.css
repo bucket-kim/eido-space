@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+}
+
 @font-face {
   font-family: "NimbusSansL";
   src: url("../public/font/NimbusSanL-Reg.otf");

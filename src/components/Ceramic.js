@@ -13,7 +13,6 @@ const Ceramic = (props) => {
     TextureLoader,
     "/images/ceramic/ceramic_BaseColor.png"
   );
-  const height = useLoader(TextureLoader, "/images/ceramic/ceramic_Height.png");
   const metalness = useLoader(
     TextureLoader,
     "/images/ceramic/ceramic_Metalness.png"
@@ -24,7 +23,6 @@ const Ceramic = (props) => {
   roughness.flipY = false;
   normal.flipY = false;
   baseColor.flipY = false;
-  height.flipY = false;
   metalness.flipY = false;
   return (
     <>

@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import { useGLTF, useTexture } from "@react-three/drei";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
 import { useLoader } from "@react-three/fiber";
 import * as THREE from "three";
+import gsap from "gsap";
+import Ceramic from "./Ceramic.js";
 
 const EidolonBlock = (props) => {
-  const { nodes, materials } = useGLTF("/models/eidolon2.glb");
+  const { nodes } = useGLTF("/models/eidolon2.glb");
 
   return (
     <>
@@ -13,10 +15,10 @@ const EidolonBlock = (props) => {
         castShadow
         geometry={nodes.Eidolon_Logo.geometry}
         {...props}
-        material={materials}
+        ref={props.blockRef}
       >
         {/* <DiamondMaterial texture={texture} ref={diamond} /> */}
-        {/* <Ceramic ref={ceramic} /> */}
+        {/* <Ceramic /> */}
         <meshPhysicalMaterial
           map={props.colorMap}
           metalnessMap={props.metalnessMap}

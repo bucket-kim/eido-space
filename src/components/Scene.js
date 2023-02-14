@@ -18,7 +18,7 @@ const Rig = () => {
   );
 };
 
-const Scene = () => {
+const Scene = (props) => {
   return (
     <>
       <div className="scene">

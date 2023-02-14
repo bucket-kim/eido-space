@@ -8,6 +8,11 @@ import { gsap } from "gsap";
 
 const Models = (props) => {
   const ref = useRef();
+  const blockRef1 = useRef();
+  // const blockRef2 = useRef();
+  // const blockRef3 = useRef();
+  // const blockRef4 = useRef();
+  // const blockRef5 = useRef();
 
   const [colorMap, normalMap, roughnessMap, metalnessMap] = useTexture([
     "/images/crystal/eidolon_BaseColor.png",
@@ -122,6 +127,7 @@ const Models = (props) => {
       >
         <mesh ref={box1} position={[0.396422, 0.195501, 0]}>
           <EidolonBlock
+            blockRef={blockRef1}
             texture={texture}
             colorMap={colorMap}
             roughnessMap={roughnessMap}
@@ -131,6 +137,7 @@ const Models = (props) => {
         </mesh>
         <mesh ref={box2} position={[-0.388236, 0.595516, 0]}>
           <EidolonBlock
+            // blockRef={blockRef2}
             texture={texture}
             colorMap={colorMap}
             roughnessMap={roughnessMap}
@@ -140,6 +147,7 @@ const Models = (props) => {
         </mesh>
         <mesh ref={box3} position={[0.396422, 0.977503, 0]}>
           <EidolonBlock
+            // blockRef={blockRef3}
             texture={texture}
             colorMap={colorMap}
             roughnessMap={roughnessMap}
@@ -149,6 +157,7 @@ const Models = (props) => {
         </mesh>
         <mesh ref={box4} position={[-0.388236, 1.3685, 0]}>
           <EidolonBlock
+            // blockRef={blockRef4}
             texture={texture}
             colorMap={colorMap}
             roughnessMap={roughnessMap}
@@ -158,6 +167,7 @@ const Models = (props) => {
         </mesh>
         <mesh ref={box5} position={[0.396422, 1.75951, 0]}>
           <EidolonBlock
+            // blockRef={blockRef5}
             texture={texture}
             colorMap={colorMap}
             roughnessMap={roughnessMap}

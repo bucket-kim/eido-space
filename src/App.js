@@ -1,13 +1,13 @@
 import "./App.css";
-import MainPage from "./MainPage";
-import { AnimatePresence, motion } from "framer-motion";
+import Overlay from "./Overlay";
+import { motion } from "framer-motion";
 import { useState } from "react";
 
 function App() {
   const [isClicked, setIsClicked] = useState(false);
   return (
     <>
-      <MainPage
+      <Overlay
         handleClick={() => {
           setIsClicked(!isClicked);
         }}
