@@ -95,7 +95,7 @@ const EidolonBlock = (props) => {
           castShadow
           geometry={nodes.Eidolon_Geo001.geometry}
           {...props}
-          position={[-0.395016, 0.193978, 0]}
+          position={[0.395016, 0.193978, 0]}
           ref={block1}
         >
           <meshPhysicalMaterial

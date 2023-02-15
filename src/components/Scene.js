@@ -37,10 +37,6 @@ const Scene = (props) => {
           <spotLight position={[5, 5, -10]} angle={0.15} penumbra={1} />
           <pointLight position={[-10, -10, -10]} />
 
-          <Html fullscreen={true} prepend={true}>
-            <h1 className="text-white text-3xl">HI</h1>
-          </Html>
-
           <Suspense>
             <Models />
           </Suspense>

@@ -2,11 +2,22 @@ import "./MainPage.css";
 import Logo from "./components/Logo";
 import Scene from "./components/Scene";
 import { TypeAnimation } from "react-type-animation";
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import gsap from "gsap";
 
 function Overlay(props) {
   const [isHover, setIsHover] = useState(false);
+
+  useLayoutEffect(() => {
+    gsap.to(".fade", {
+      opacity: 0.2,
+      delay: 12,
+      transition: {
+        duration: 0.3,
+      },
+    });
+  }, []);
 
   return (
     <>
@@ -20,56 +31,58 @@ function Overlay(props) {
               cursor={false}
               speed={60}
             />
-            <div className="flex">
+            <div className="flex flex-col items-end fade">
+              <div className="flex">
+                <TypeAnimation
+                  sequence={[3300, "Contact us at "]}
+                  cursor={false}
+                  wrapper={"div"}
+                  speed={60}
+                />
+                <TypeAnimation
+                  sequence={[3950, "connect@eidolon.com"]}
+                  cursor={false}
+                  wrapper={"a"}
+                  className={"indent-1 text-blue-500"}
+                />
+              </div>
               <TypeAnimation
-                sequence={[3300, "Contact us at "]}
-                cursor={false}
-                wrapper={"div"}
-                speed={60}
-              />
-              <TypeAnimation
-                sequence={[3950, "connect@eidolon.com"]}
-                cursor={false}
-                wrapper={"a"}
-                className={"indent-1 text-blue-500"}
-              />
-            </div>
-            <TypeAnimation
-              sequence={[5250, "Created using Web3"]}
-              cursor={false}
-              wrapper={"div"}
-              className={""}
-              speed={60}
-            />
-            <TypeAnimation
-              sequence={[6000, "Axe coming 5.9.2024"]}
-              cursor={false}
-              wrapper={"div"}
-              className={""}
-              speed={60}
-            />
-            <TypeAnimation
-              sequence={[7000, "Join the collective"]}
-              cursor={false}
-              wrapper={"div"}
-              className={"text-red-500"}
-              speed={60}
-            />
-            <div className="flex">
-              <TypeAnimation
-                sequence={[8000, "Follow us on social media"]}
+                sequence={[5250, "Created using Web3"]}
                 cursor={false}
                 wrapper={"div"}
                 className={""}
                 speed={60}
               />
               <TypeAnimation
-                sequence={[8950, " @eidolon"]}
+                sequence={[6000, "Axe coming 5.9.2024"]}
                 cursor={false}
-                wrapper={"a"}
-                className={"indent-1 text-yellow-300"}
+                wrapper={"div"}
+                className={""}
                 speed={60}
               />
+              <TypeAnimation
+                sequence={[7000, "Join the collective"]}
+                cursor={false}
+                wrapper={"div"}
+                className={"text-red-500"}
+                speed={60}
+              />
+              <div className="flex">
+                <TypeAnimation
+                  sequence={[8000, "Follow us on social media"]}
+                  cursor={false}
+                  wrapper={"div"}
+                  className={""}
+                  speed={60}
+                />
+                <TypeAnimation
+                  sequence={[8950, " @eidolon"]}
+                  cursor={false}
+                  wrapper={"a"}
+                  className={"indent-1 text-yellow-300"}
+                  speed={60}
+                />
+              </div>
             </div>
           </div>
         </div>
