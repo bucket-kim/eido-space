@@ -1,4 +1,4 @@
-import { useFrame, useLoader } from "@react-three/fiber";
+import { useFrame, useLoader, useThree } from "@react-three/fiber";
 import { useLayoutEffect, useRef, useState } from "react";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
 import { useTexture } from "@react-three/drei";
@@ -7,27 +7,19 @@ import * as THREE from "three";
 import { gsap } from "gsap";
 
 const Models = (props) => {
-  const ref = useRef();
-  const blockRef1 = useRef();
-  // const blockRef2 = useRef();
-  // const blockRef3 = useRef();
-  // const blockRef4 = useRef();
-  // const blockRef5 = useRef();
+  const meshGroup = useRef();
 
   const [colorMap, normalMap, roughnessMap, metalnessMap] = useTexture([
-    "/images/crystal/eidolon_BaseColor.png",
-    "/images/crystal/eidolon_Normal.png",
-    "/images/crystal/eidolon_Roughness.png",
-    "/images/crystal/eidolon_Metalness.png",
+    "/images/diamond/eidolon_BaseColor.png",
+    "/images/diamond/eidolon_Normal.png",
+    "/images/diamond/eidolon_Roughness.png",
+    "/images/diamond/eidolon_Metalness.png",
   ]);
 
-  const [ceramicColor, ceramicNormal, ceramicRoughness, ceramicMetalness] =
-    useTexture([
-      "/images/ceramic/ceramic_BaseColor.png",
-      "/images/ceramic/ceramic_Normal.png",
-      "/images/ceramic/ceramic_Roughness.png",
-      "/images/ceramic/ceramic_Metalness.png",
-    ]);
+  colorMap.flipY = false;
+  normalMap.flipY = false;
+  roughnessMap.flipY = false;
+  metalnessMap.flipY = false;
 
   const texture = useLoader(RGBELoader, "/images/royal_esplanade.hdr");
   texture.mapping = THREE.EquirectangularRefractionMapping;
@@ -36,138 +28,15 @@ const Models = (props) => {
   const [isHover, setIsHover] = useState(false);
 
   useFrame((state, delta) => {
-    ref.current.rotation.y += delta * 0.025;
-  });
-
-  const box1 = useRef();
-  const box2 = useRef();
-  const box3 = useRef();
-  const box4 = useRef();
-  const box5 = useRef();
-
-  useLayoutEffect(() => {
-    if (isHover) {
-      gsap.to(box1.current.position, {
-        x: 0.6,
-        y: 0.2,
-        z: 0,
-        duration: 0.3,
-      });
-      gsap.to(box2.current.position, {
-        x: -0.6,
-        y: 0.6,
-        z: 0,
-        duration: 0.3,
-      });
-
-      gsap.to(box3.current.position, {
-        x: 0.6,
-        y: 1,
-        z: 0,
-        duration: 0.3,
-      });
-      gsap.to(box4.current.position, {
-        x: -0.6,
-        y: 1.4,
-        z: 0,
-        duration: 0.3,
-      });
-      gsap.to(box5.current.position, {
-        x: 0.6,
-        y: 1.8,
-        z: 0,
-        duration: 0.3,
-      });
-    } else {
-      gsap.to(box1.current.position, {
-        x: 0.396422,
-        y: 0.195501,
-        z: 0,
-        duration: 0.3,
-      });
-      gsap.to(box2.current.position, {
-        x: -0.388236,
-        y: 0.595516,
-        z: 0,
-        duration: 0.3,
-      });
-      gsap.to(box3.current.position, {
-        x: 0.396422,
-        y: 0.977503,
-        z: 0,
-        duration: 0.3,
-      });
-      gsap.to(box4.current.position, {
-        x: -0.388236,
-        y: 1.3685,
-        z: 0,
-        duration: 0.3,
-      });
-      gsap.to(box5.current.position, {
-        x: 0.396422,
-        y: 1.75951,
-        z: 0,
-        duration: 0.3,
-      });
-    }
+    meshGroup.current.rotation.y += delta * 0.025;
   });
 
   return (
     <>
-      <group
-        position={[0, -2, 0]}
-        scale={1.5}
-        ref={ref}
-        onPointerEnter={() => {
-          setIsHover(true);
-        }}
-        onPointerLeave={() => {
-          setIsHover(false);
-        }}
-      >
-        <mesh ref={box1} position={[0.396422, 0.195501, 0]}>
+      <group position={[0, -1.65, 0]} scale={1.5}>
+        <mesh>
           <EidolonBlock
-            blockRef={blockRef1}
-            texture={texture}
-            colorMap={colorMap}
-            roughnessMap={roughnessMap}
-            normalMap={normalMap}
-            metalnessMap={metalnessMap}
-          />
-        </mesh>
-        <mesh ref={box2} position={[-0.388236, 0.595516, 0]}>
-          <EidolonBlock
-            // blockRef={blockRef2}
-            texture={texture}
-            colorMap={colorMap}
-            roughnessMap={roughnessMap}
-            normalMap={normalMap}
-            metalnessMap={metalnessMap}
-          />
-        </mesh>
-        <mesh ref={box3} position={[0.396422, 0.977503, 0]}>
-          <EidolonBlock
-            // blockRef={blockRef3}
-            texture={texture}
-            colorMap={colorMap}
-            roughnessMap={roughnessMap}
-            normalMap={normalMap}
-            metalnessMap={metalnessMap}
-          />
-        </mesh>
-        <mesh ref={box4} position={[-0.388236, 1.3685, 0]}>
-          <EidolonBlock
-            // blockRef={blockRef4}
-            texture={texture}
-            colorMap={colorMap}
-            roughnessMap={roughnessMap}
-            normalMap={normalMap}
-            metalnessMap={metalnessMap}
-          />
-        </mesh>
-        <mesh ref={box5} position={[0.396422, 1.75951, 0]}>
-          <EidolonBlock
-            // blockRef={blockRef5}
+            meshGroup={meshGroup}
             texture={texture}
             colorMap={colorMap}
             roughnessMap={roughnessMap}

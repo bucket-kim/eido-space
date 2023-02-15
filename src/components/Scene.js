@@ -1,13 +1,14 @@
-import { Environment, OrbitControls } from "@react-three/drei";
+import { Environment, Html, OrbitControls } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import "../App.css";
 import * as THREE from "three";
 import Models from "./Models";
-import { Suspense } from "react";
+import { Suspense, useRef, useState } from "react";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 
 const Rig = () => {
   const { camera, mouse } = useThree();
+
   const vec = new THREE.Vector3();
   camera.lookAt(0, 0.5, 0);
   return useFrame(() =>
@@ -19,6 +20,7 @@ const Rig = () => {
 };
 
 const Scene = (props) => {
+  const [hidden, set] = useState();
   return (
     <>
       <div className="scene">
@@ -34,6 +36,10 @@ const Scene = (props) => {
           <ambientLight intensity={0.5} />
           <spotLight position={[5, 5, -10]} angle={0.15} penumbra={1} />
           <pointLight position={[-10, -10, -10]} />
+
+          <Html fullscreen={true} prepend={true}>
+            <h1 className="text-white text-3xl">HI</h1>
+          </Html>
 
           <Suspense>
             <Models />
