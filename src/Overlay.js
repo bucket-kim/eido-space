@@ -22,7 +22,7 @@ function Overlay(props) {
   return (
     <>
       <div className="h-screen">
-        <div className="w-full flex justify-between text-white text-[12px] px-24 pt-[6em]  font-NimbusSansL absolute z-10">
+        <div className="md:w-full flex justify-between text-white text-[12px] px-24 pt-[6em]  font-NimbusSansL absolute z-10 sm:pt-[1em]">
           <Logo />
 
           <div className="flex flex-col items-end ">

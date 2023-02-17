@@ -83,12 +83,12 @@ const EidolonBlock = (props) => {
   return (
     <>
       <group
-        onPointerEnter={() => {
-          setIsHover(true);
+        onClick={() => {
+          setIsHover(!isHover);
         }}
-        onPointerLeave={() => {
-          setIsHover(false);
-        }}
+        // onPointerLeave={() => {
+        //   setIsHover(false);
+        // }}
         ref={props.meshGroup}
       >
         <mesh
