@@ -1,10 +1,9 @@
-import { useFrame, useLoader, useThree } from "@react-three/fiber";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useFrame, useLoader } from "@react-three/fiber";
+import { useLayoutEffect, useRef } from "react";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
 import { useTexture } from "@react-three/drei";
 import EidolonBlock from "./EidolonBlock";
 import * as THREE from "three";
-import { gsap } from "gsap";
 
 const Models = (props) => {
   const meshGroup = useRef();
@@ -28,7 +27,7 @@ const Models = (props) => {
   texture.encoding = THREE.sRGBEncoding;
 
   useFrame((state, delta) => {
-    meshGroup.current.rotation.y += delta * 0.025;
+    meshGroup.current.rotation.y += delta * 0.075;
   });
 
   return (

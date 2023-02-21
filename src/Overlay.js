@@ -21,7 +21,18 @@ function Overlay(props) {
 
   return (
     <>
-      <div className="h-screen">
+      <motion.div
+        className="h-screen"
+        initial={{
+          y: 0,
+        }}
+        animate={{
+          y: props.isClicked ? -40 : 0,
+        }}
+        transition={{
+          duration: 0.2,
+        }}
+      >
         <div className="w-full flex justify-between text-white text-[12px] px-24 pt-[6em]  font-NimbusSansL absolute z-10 sm:pt-[1em]">
           <Logo />
 
@@ -123,7 +134,7 @@ function Overlay(props) {
             Buy
           </button>
         </motion.div>
-      </div>
+      </motion.div>
     </>
   );
 }

@@ -6,11 +6,12 @@ import { useState } from "react";
 function App() {
   const [isClicked, setIsClicked] = useState(false);
   return (
-    <>
+    <motion.div>
       <Overlay
         handleClick={() => {
           setIsClicked(!isClicked);
         }}
+        isClicked={isClicked}
       />
 
       <motion.button
@@ -27,7 +28,7 @@ function App() {
       >
         Connect to Wallet
       </motion.button>
-    </>
+    </motion.div>
   );
 }
 
