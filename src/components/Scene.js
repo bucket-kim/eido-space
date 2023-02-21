@@ -34,19 +34,20 @@ const Scene = (props) => {
         >
           <color args={[0x000000]} attach="background" />
           <ambientLight intensity={0.5} />
-          <spotLight position={[5, 5, -10]} angle={0.15} penumbra={1} />
-          <pointLight position={[-10, -10, -10]} />
+          {/* <spotLight position={[5, 5, -10]} angle={0.15} penumbra={1} /> */}
+          {/* <pointLight position={[-10, -10, -10]} /> */}
 
           <Suspense>
             <Models />
           </Suspense>
           <Environment files="/images/royal_esplanade.hdr" backgroud={false} />
+          {/* <Environment preset="studio" /> */}
           <OrbitControls
             enabled={true}
             minPolarAngle={0}
             maxPolarAngle={Math.PI / 1.5}
             maxDistance={10}
-            minDistance={1}
+            minDistance={2.5}
           />
           <EffectComposer>
             <Bloom

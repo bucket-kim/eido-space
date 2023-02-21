@@ -2,19 +2,19 @@ import "./MainPage.css";
 import Logo from "./components/Logo";
 import Scene from "./components/Scene";
 import { TypeAnimation } from "react-type-animation";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 
 function Overlay(props) {
   const [isHover, setIsHover] = useState(false);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     gsap.to(".fade", {
       opacity: 0.2,
-      delay: 12,
+      delay: 9.5,
       transition: {
-        duration: 0.3,
+        duration: 0.15,
       },
     });
   }, []);
@@ -22,7 +22,7 @@ function Overlay(props) {
   return (
     <>
       <div className="h-screen">
-        <div className="md:w-full flex justify-between text-white text-[12px] px-24 pt-[6em]  font-NimbusSansL absolute z-10 sm:pt-[1em]">
+        <div className="w-full flex justify-between text-white text-[12px] px-24 pt-[6em]  font-NimbusSansL absolute z-10 sm:pt-[1em]">
           <Logo />
 
           <div className="flex flex-col items-end ">
@@ -94,14 +94,14 @@ function Overlay(props) {
           animate={{ opacity: 1 }}
         >
           <motion.div
-            whileHover={{ y: -50 }}
             transition={{ type: "easeInOut" }}
-            onHoverStart={() => {
-              setIsHover(true);
+            onClick={() => {
+              setIsHover(!isHover);
             }}
-            onHoverEnd={() => {
-              setIsHover(false);
+            animate={{
+              y: isHover ? -44 : 0,
             }}
+            className={"cursor-pointer"}
           >
             #0001
             <div>

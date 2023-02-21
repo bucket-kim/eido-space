@@ -16,10 +16,10 @@ function App() {
       <motion.button
         className="absolute bg-slate-50 w-full text-center rounded-xl bottom-0 h-10"
         initial={{
-          opacity: 0,
+          y: 40,
         }}
         animate={{
-          opacity: isClicked ? 1 : 0,
+          y: isClicked ? 0 : 40,
         }}
         transition={{
           duration: 0.2,

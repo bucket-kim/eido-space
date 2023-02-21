@@ -1,10 +1,10 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
-import { useGLTF, useTexture } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 import gsap from "gsap";
 import * as THREE from "three";
 
 const EidolonBlock = (props) => {
-  const { nodes } = useGLTF("/models/eidolon.glb");
+  const { nodes } = useGLTF("/models/eidolon3.glb");
 
   const block1 = useRef();
   const block2 = useRef();
@@ -95,10 +95,10 @@ const EidolonBlock = (props) => {
           castShadow
           geometry={nodes.Eidolon_Geo001.geometry}
           {...props}
-          position={[0.395016, 0.193978, 0]}
+          position={[0.393062, 0, 0]}
           ref={block1}
         >
-          <meshPhysicalMaterial
+          {/* <meshPhysicalMaterial
             map={props.colorMap}
             metalnessMap={props.metalnessMap}
             roughnessMap={props.roughnessMap}
@@ -115,110 +115,73 @@ const EidolonBlock = (props) => {
             clearcoatNormalMap={props.normalMap}
             alphaMap={props.emissionMap}
             toneMapped={false}
+          /> */}
+          <meshStandardMaterial
+            map={props.colorMap}
+            metalnessMap={props.metalnessMap}
+            roughnessMap={props.roughnessMap}
+            normalMap={props.normalMap}
+            normalScale={2}
           />
         </mesh>
         <mesh
           castShadow
           geometry={nodes.Eidolon_Geo002.geometry}
           {...props}
-          position={[-0.395016, 0.583159, 0]}
+          position={[-0.393062, 0.394635, 0]}
           ref={block2}
         >
-          <meshPhysicalMaterial
+          <meshStandardMaterial
             map={props.colorMap}
             metalnessMap={props.metalnessMap}
             roughnessMap={props.roughnessMap}
-            transmission={1}
-            thickness={2.42}
-            ior={2.42}
-            reflectivity={0.5}
-            envMap={props.texture}
-            envMapIntensity={5}
-            clearcoat={1}
-            transparent={true}
-            clearcoatNormalScale={0.5}
-            opacity={0.75}
-            clearcoatNormalMap={props.normalMap}
-            alphaMap={props.emissionMap}
-            toneMapped={false}
+            normalMap={props.normalMap}
+            normalScale={2}
           />
         </mesh>
         <mesh
           castShadow
           geometry={nodes.Eidolon_Geo003.geometry}
           {...props}
-          position={[0.395016, 0.972841, 0]}
+          position={[0.393062, 0.78927, 0]}
           ref={block3}
         >
-          <meshPhysicalMaterial
+          <meshStandardMaterial
             map={props.colorMap}
             metalnessMap={props.metalnessMap}
             roughnessMap={props.roughnessMap}
-            transmission={1}
-            thickness={2.42}
-            ior={2.42}
-            reflectivity={0.5}
-            envMap={props.texture}
-            envMapIntensity={5}
-            clearcoat={1}
-            transparent={true}
-            clearcoatNormalScale={0.5}
-            opacity={0.75}
-            clearcoatNormalMap={props.normalMap}
-            alphaMap={props.emissionMap}
-            toneMapped={false}
+            normalMap={props.normalMap}
+            normalScale={2}
           />
         </mesh>
         <mesh
           castShadow
           geometry={nodes.Eidolon_Geo004.geometry}
           {...props}
-          position={[-0.395016, 1.3623, 0]}
+          position={[-0.393062, 1.18391, 0]}
           ref={block4}
         >
-          <meshPhysicalMaterial
+          <meshStandardMaterial
             map={props.colorMap}
             metalnessMap={props.metalnessMap}
             roughnessMap={props.roughnessMap}
-            transmission={1}
-            thickness={2.42}
-            ior={2.42}
-            reflectivity={0.5}
-            envMap={props.texture}
-            envMapIntensity={5}
-            clearcoat={1}
-            transparent={true}
-            clearcoatNormalScale={0.5}
-            opacity={0.75}
             clearcoatNormalMap={props.normalMap}
-            alphaMap={props.emissionMap}
-            toneMapped={false}
+            normalScale={2}
           />
         </mesh>
         <mesh
           castShadow
           geometry={nodes.Eidolon_Geo005.geometry}
           {...props}
-          position={[0.395016, 1.7513, 0]}
+          position={[0.393062, 1.57854, 0]}
           ref={block5}
         >
-          <meshPhysicalMaterial
+          <meshStandardMaterial
             map={props.colorMap}
             metalnessMap={props.metalnessMap}
             roughnessMap={props.roughnessMap}
-            transmission={1}
-            thickness={2.42}
-            ior={2.42}
-            reflectivity={0.5}
-            envMap={props.texture}
-            envMapIntensity={5}
-            clearcoat={1}
-            transparent={true}
-            clearcoatNormalScale={0.5}
-            opacity={0.75}
             clearcoatNormalMap={props.normalMap}
-            alphaMap={props.emissionMap}
-            toneMapped={false}
+            normalScale={2}
           />
         </mesh>
       </group>
