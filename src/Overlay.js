@@ -33,10 +33,10 @@ function Overlay(props) {
           duration: 0.2,
         }}
       >
-        <div className="w-full flex justify-between text-white text-[12px] px-24 pt-[6em]  font-NimbusSansL absolute z-10 sm:pt-[1em]">
+        <div className="w-full flex justify-between text-white absolute z-10 text-[12px] px-24 pt-[6em] sm:px-10 sm:pt-[2.5em]">
           <Logo />
 
-          <div className="flex flex-col items-end ">
+          <div className="flex flex-col items-end sm:text-[10px]">
             <TypeAnimation
               sequence={["Welcome to Eidolon your new digital galary."]}
               cursor={false}
@@ -99,7 +99,7 @@ function Overlay(props) {
         </div>
         <Scene />
         <motion.div
-          className="w-full text-white flex justify-between absolute bottom-0 px-24 pb-8 text-[12px]
+          className="w-full text-white flex justify-between absolute bottom-0 px-24 pb-8 text-[12px] sm:text-[10px] sm:pb-[0em] sm:px-10
            "
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -130,7 +130,7 @@ function Overlay(props) {
               </motion.div>
             </div>
           </motion.div>
-          <button className="pb-[3em]" onClick={props.handleClick}>
+          <button className="pb-[3em] " onClick={props.handleClick}>
             Buy
           </button>
         </motion.div>

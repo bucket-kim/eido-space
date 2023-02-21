@@ -33,31 +33,28 @@ const Scene = (props) => {
           }}
         >
           <color args={[0x000000]} attach="background" />
-          <ambientLight intensity={0.5} />
-          {/* <spotLight position={[5, 5, -10]} angle={0.15} penumbra={1} /> */}
-          {/* <pointLight position={[-10, -10, -10]} /> */}
+          {/* <ambientLight intensity={0.5} /> */}
+          <directionalLight
+            castShadow
+            position={[-20, 10, 5]}
+            intensity={2}
+            shadow-mapSize-height={2048}
+            shadow-mapSize-width={2048}
+          />
+          <pointLight position={[-5, 5, 0]} intensity={0.5} />
 
           <Suspense>
             <Models />
           </Suspense>
-          <Environment files="/images/royal_esplanade.hdr" backgroud={false} />
-          {/* <Environment preset="studio" /> */}
+          <Environment files="/images/studio.hdr" background={false} />
+          {/* <Environment preset="studio" background={true} /> */}
           <OrbitControls
             enabled={true}
             minPolarAngle={0}
             maxPolarAngle={Math.PI / 1.5}
-            maxDistance={10}
-            minDistance={2.5}
+            maxDistance={8}
+            minDistance={3}
           />
-          <EffectComposer>
-            <Bloom
-              mipmapBlur
-              intensity={0.25}
-              levels={9}
-              luminanceThreshold={1}
-              luminanceSmoothing={1}
-            />
-          </EffectComposer>
 
           {/* <Rig /> */}
         </Canvas>

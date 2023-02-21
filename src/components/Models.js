@@ -36,11 +36,11 @@ const Models = (props) => {
         <mesh>
           <EidolonBlock
             meshGroup={meshGroup}
-            texture={texture}
+            // texture={texture}
             colorMap={colorMap}
-            roughnessMap={roughnessMap}
-            normalMap={normalMap}
-            metalnessMap={metalnessMap}
+            // roughnessMap={roughnessMap}
+            // normalMap={normalMap}
+            // metalnessMap={metalnessMap}
           />
         </mesh>
       </group>

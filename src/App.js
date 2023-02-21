@@ -6,7 +6,7 @@ import { useState } from "react";
 function App() {
   const [isClicked, setIsClicked] = useState(false);
   return (
-    <motion.div>
+    <div className="overflow-y-hidden">
       <Overlay
         handleClick={() => {
           setIsClicked(!isClicked);
@@ -15,7 +15,7 @@ function App() {
       />
 
       <motion.button
-        className="absolute bg-slate-50 w-full text-center rounded-xl bottom-0 h-10"
+        className="absolute bg-slate-50 w-full text-center rounded-xl bottom-0 h-10 "
         initial={{
           y: 40,
         }}
@@ -28,7 +28,7 @@ function App() {
       >
         Connect to Wallet
       </motion.button>
-    </motion.div>
+    </div>
   );
 }
 
