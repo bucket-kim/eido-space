@@ -15,7 +15,7 @@ function App() {
       />
 
       <motion.button
-        className=" bg-slate-50 w-full text-center rounded-xl bottom-0 h-10 "
+        className=" bg-slate-50 w-full text-center bottom-0 h-10 "
         initial={{
           y: 40,
         }}

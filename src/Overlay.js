@@ -2,12 +2,27 @@ import "./MainPage.css";
 import Logo from "./components/Logo";
 import Scene from "./components/Scene";
 import { TypeAnimation } from "react-type-animation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
+import { useIsSmall } from "./useMediaQuery";
 
 function Overlay(props) {
   const [isHover, setIsHover] = useState(false);
+
+  const isSmall = useIsSmall();
+
+  const variants = isSmall
+    ? {
+        animate: {
+          y: 0,
+        },
+      }
+    : {
+        animate: {
+          y: props.isClicked ? -40 : 0,
+        },
+      };
 
   useEffect(() => {
     gsap.to(".fade", {
@@ -26,9 +41,7 @@ function Overlay(props) {
         initial={{
           y: 0,
         }}
-        animate={{
-          y: props.isClicked ? -40 : 0,
-        }}
+        variants={variants}
         transition={{
           duration: 0.2,
         }}
