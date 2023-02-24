@@ -19,7 +19,7 @@ function App() {
       />
 
       <motion.button
-        className="  absolute bg-slate-50 w-full text-center -bottom-10 h-10 sm: bottom-[4.25rem]"
+        className="  absolute bg-slate-50 w-full text-center -bottom-10 h-10 sm:bottom-[4.25rem]"
         initial={{
           y: 0,
         }}
