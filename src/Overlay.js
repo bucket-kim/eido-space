@@ -99,7 +99,7 @@ function Overlay(props) {
         </div>
         <Scene />
         <motion.div
-          className="w-full text-white flex justify-between absolute bottom-0 px-24 pb-8 text-[12px] z-10 sm:text-[12px] sm:pb-[0em] sm:px-10
+          className="w-full text-white flex justify-between absolute bottom-0 px-24 pb-8 text-[12px] z-10 sm:text-[12px] sm:pb-[1em] sm:px-10
            "
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

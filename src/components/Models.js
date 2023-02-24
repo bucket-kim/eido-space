@@ -29,7 +29,7 @@ const Models = (props) => {
 
   colorMap.encoding = THREE.sRGBEncoding;
 
-  const envMapIntensity = 0.5;
+  const envMapIntensity = 0.05;
 
   const uniforms = {
     uTime: {
@@ -44,39 +44,39 @@ const Models = (props) => {
   };
 
   useFrame((state) => {
-    meshGroup.current.rotation.y = state.clock.elapsedTime * 0.075;
-    uniforms.uTime.value = state.clock.elapsedTime * 0.02;
+    meshGroup.current.rotation.y = state.clock.elapsedTime * 0.35;
+    uniforms.uTime.value = state.clock.elapsedTime * 0.025;
   });
 
   useEffect(() => {
     if (onTap) {
       gsap.to(block1.current.position, {
-        x: -0.2,
+        x: 0.2,
         y: 0,
         z: 0,
         duration: 0.3,
       });
 
       gsap.to(block2.current.position, {
-        x: 0.2,
+        x: -0.2,
         y: 0,
         z: 0,
         duration: 0.3,
       });
       gsap.to(block3.current.position, {
-        x: -0.2,
-        y: 0,
-        z: 0,
-        duration: 0.3,
-      });
-      gsap.to(block4.current.position, {
         x: 0.2,
         y: 0,
         z: 0,
         duration: 0.3,
       });
-      gsap.to(block5.current.position, {
+      gsap.to(block4.current.position, {
         x: -0.2,
+        y: 0,
+        z: 0,
+        duration: 0.3,
+      });
+      gsap.to(block5.current.position, {
+        x: 0.2,
         y: 0,
         z: 0,
         duration: 0.3,
@@ -120,15 +120,13 @@ const Models = (props) => {
       <group
         position={[0, -1.75, 0]}
         scale={1.5}
-        rotation={[0, Math.PI, 0]}
         ref={meshGroup}
         onClick={() => {
           setOnTap(!onTap);
         }}
       >
-        <mesh ref={block1}>
+        <mesh ref={block1} rotation={[0, Math.PI, 0]}>
           <EidolonBlock
-            meshGroup={meshGroup}
             colorMap={colorMap}
             roughnessMap={roughnessMap}
             normalMap={normalMap}
@@ -139,9 +137,8 @@ const Models = (props) => {
             uAlpha={uniforms.uAlpha}
           />
         </mesh>
-        <mesh ref={block2}>
+        <mesh ref={block2} rotation={[0, Math.PI, 0]}>
           <EidolonBlock
-            meshGroup={meshGroup}
             colorMap={colorMap}
             roughnessMap={roughnessMap}
             normalMap={normalMap}
@@ -152,9 +149,8 @@ const Models = (props) => {
             uAlpha={uniforms.uAlpha}
           />
         </mesh>
-        <mesh ref={block3}>
+        <mesh ref={block3} rotation={[0, Math.PI, 0]}>
           <EidolonBlock
-            meshGroup={meshGroup}
             colorMap={colorMap}
             roughnessMap={roughnessMap}
             normalMap={normalMap}
@@ -165,9 +161,8 @@ const Models = (props) => {
             uAlpha={uniforms.uAlpha}
           />
         </mesh>
-        <mesh ref={block4}>
+        <mesh ref={block4} rotation={[0, Math.PI, 0]}>
           <EidolonBlock
-            meshGroup={meshGroup}
             colorMap={colorMap}
             roughnessMap={roughnessMap}
             normalMap={normalMap}
@@ -178,9 +173,8 @@ const Models = (props) => {
             uAlpha={uniforms.uAlpha}
           />
         </mesh>
-        <mesh ref={block5}>
+        <mesh ref={block5} rotation={[0, Math.PI, 0]}>
           <EidolonBlock
-            meshGroup={meshGroup}
             colorMap={colorMap}
             roughnessMap={roughnessMap}
             normalMap={normalMap}

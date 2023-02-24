@@ -3,7 +3,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import "../App.css";
 import * as THREE from "three";
 import Models from "./Models";
-import { Suspense, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 
 const Rig = () => {
@@ -20,10 +20,13 @@ const Rig = () => {
 };
 
 const Scene = (props) => {
+  const windowRef = useRef();
+
   return (
     <>
       <div className="scene">
         <Canvas
+          ref={windowRef}
           gl={{ antialias: true }}
           shadows
           camera={{
@@ -32,10 +35,11 @@ const Scene = (props) => {
           }}
         >
           <color args={[0x000000]} attach="background" />
+          {/* <ambientLight intensity={0.1} /> */}
           <directionalLight
             castShadow
-            position={[-30, 15, 5]}
-            intensity={1}
+            position={[5, 15, 1]}
+            intensity={2.5}
             shadow-mapSize-height={2048}
             shadow-mapSize-width={2048}
           />
@@ -44,13 +48,13 @@ const Scene = (props) => {
           <Suspense>
             <Models />
           </Suspense>
-          {/* <Environment files="/images/royal_esplanade.hdr" background={false} /> */}
           <Environment files="/images/studio.hdr" background={false} />
+          {/* <Environment preset="studio" background={false} /> */}
           <OrbitControls
             enabled={true}
             minPolarAngle={0}
             // maxPolarAngle={Math.PI / 1.5}
-            maxDistance={8}
+            maxDistance={10}
             minDistance={3}
           />
 
