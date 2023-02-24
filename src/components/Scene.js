@@ -55,7 +55,7 @@ const Scene = (props) => {
             minPolarAngle={0}
             // maxPolarAngle={Math.PI / 1.5}
             maxDistance={10}
-            minDistance={3}
+            minDistance={2}
           />
 
           {/* <Rig /> */}

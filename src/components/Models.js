@@ -46,6 +46,11 @@ const Models = (props) => {
   useFrame((state) => {
     meshGroup.current.rotation.y = state.clock.elapsedTime * 0.35;
     uniforms.uTime.value = state.clock.elapsedTime * 0.025;
+
+    if (state.size.width <= 390) {
+      meshGroup.current.scale.set(0.85, 0.85, 0.85);
+      meshGroup.current.position.y = -0.5;
+    }
   });
 
   useEffect(() => {

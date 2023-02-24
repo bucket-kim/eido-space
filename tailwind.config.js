@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {},
     screens: {
-      "sm": { "max": "390px" },
+      "sm": { "max": "400px" },
     },
     fontFamily: {
       "NimbusSansL": ["NimbusSansL", "sans-serif"],

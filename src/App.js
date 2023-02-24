@@ -2,11 +2,15 @@ import "./App.css";
 import Overlay from "./Overlay";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useIsSmall } from "./useMediaQuery";
 
 function App() {
   const [isClicked, setIsClicked] = useState(false);
+
+  const isSmall = useIsSmall();
+
   return (
-    <div className="overflow-y-hidden h-screen">
+    <div className="overflow-y-hidden h-full relative">
       <Overlay
         handleClick={() => {
           setIsClicked(!isClicked);
@@ -15,9 +19,9 @@ function App() {
       />
 
       <motion.button
-        className=" bg-slate-50 w-full text-center bottom-0 h-10 "
+        className="  absolute bg-slate-50 w-full text-center -bottom-10 h-10 sm: bottom-[4.25rem]"
         initial={{
-          y: 40,
+          y: 0,
         }}
         animate={{
           y: isClicked ? -40 : 0,

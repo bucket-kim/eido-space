@@ -12,18 +12,6 @@ function Overlay(props) {
 
   const isSmall = useIsSmall();
 
-  const variants = isSmall
-    ? {
-        animate: {
-          y: 0,
-        },
-      }
-    : {
-        animate: {
-          y: props.isClicked ? -40 : 0,
-        },
-      };
-
   useEffect(() => {
     gsap.to(".fade", {
       opacity: 0.2,
@@ -41,7 +29,10 @@ function Overlay(props) {
         initial={{
           y: 0,
         }}
-        variants={variants}
+        // animate="animate"
+        animate={{
+          y: props.isClicked ? -40 : 0,
+        }}
         transition={{
           duration: 0.2,
         }}
@@ -112,7 +103,7 @@ function Overlay(props) {
         </div>
         <Scene />
         <motion.div
-          className="w-full text-white flex justify-between absolute bottom-0 px-24 pb-8 text-[12px] z-10 sm:text-[12px] sm:pb-[1em] sm:px-10
+          className="w-full text-white flex justify-between absolute bottom-4 px-24 text-[12px] z-10 sm:text-[12px] sm:pb-[1em] sm:px-10 sm:bottom-[6rem]
            "
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
