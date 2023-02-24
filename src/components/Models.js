@@ -36,7 +36,7 @@ const Models = (props) => {
       value: 0,
     },
     uShow: {
-      value: true,
+      value: false,
     },
     uAlpha: {
       value: 1,
