@@ -99,7 +99,7 @@ function Overlay(props) {
         </div>
         <Scene />
         <motion.div
-          className="w-full text-white flex justify-between absolute bottom-0 px-24 pb-8 text-[12px] sm:text-[10px] sm:pb-[0em] sm:px-10
+          className="w-full text-white flex justify-between absolute bottom-0 px-24 pb-8 text-[12px] z-10 sm:text-[12px] sm:pb-[0em] sm:px-10
            "
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -110,7 +110,7 @@ function Overlay(props) {
               setIsHover(!isHover);
             }}
             animate={{
-              y: isHover ? -44 : 0,
+              y: isHover ? -36 : 0,
             }}
             className={"cursor-pointer"}
           >

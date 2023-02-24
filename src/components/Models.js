@@ -1,46 +1,194 @@
 import { useFrame, useLoader } from "@react-three/fiber";
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
 import { useTexture } from "@react-three/drei";
 import EidolonBlock from "./EidolonBlock";
 import * as THREE from "three";
+import gsap from "gsap";
 
 const Models = (props) => {
   const meshGroup = useRef();
 
-  const [colorMap, normalMap, roughnessMap, metalnessMap] = useTexture([
-    "/images/ceramic/ceramic_BaseColor.png",
-    "/images/ceramic/ceramic_Normal.png",
-    "/images/ceramic/ceramic_Roughness.png",
-    "/images/ceramic/ceramic_Metalness.png",
+  const block1 = useRef();
+  const block2 = useRef();
+  const block3 = useRef();
+  const block4 = useRef();
+  const block5 = useRef();
+
+  const [onTap, setOnTap] = useState(false);
+
+  const [colorMap, normalMap, roughnessMap] = useTexture([
+    "/images/ceramic/ceramic_BaseColor2.png",
+    "/images/ceramic/ceramic_Normal2.png",
+    "/images/ceramic/ceramic_Roughness2.png",
   ]);
 
   colorMap.flipY = false;
   normalMap.flipY = false;
   roughnessMap.flipY = false;
-  metalnessMap.flipY = false;
 
   colorMap.encoding = THREE.sRGBEncoding;
 
-  const texture = useLoader(RGBELoader, "/images/royal_esplanade.hdr");
-  texture.mapping = THREE.EquirectangularRefractionMapping;
-  texture.encoding = THREE.sRGBEncoding;
+  const envMapIntensity = 0.5;
 
-  useFrame((state, delta) => {
-    meshGroup.current.rotation.y += delta * 0.075;
+  const uniforms = {
+    uTime: {
+      value: 0,
+    },
+    uShow: {
+      value: true,
+    },
+    uAlpha: {
+      value: 1,
+    },
+  };
+
+  useFrame((state) => {
+    meshGroup.current.rotation.y = state.clock.elapsedTime * 0.075;
+    uniforms.uTime.value = state.clock.elapsedTime * 0.02;
+  });
+
+  useEffect(() => {
+    if (onTap) {
+      gsap.to(block1.current.position, {
+        x: -0.2,
+        y: 0,
+        z: 0,
+        duration: 0.3,
+      });
+
+      gsap.to(block2.current.position, {
+        x: 0.2,
+        y: 0,
+        z: 0,
+        duration: 0.3,
+      });
+      gsap.to(block3.current.position, {
+        x: -0.2,
+        y: 0,
+        z: 0,
+        duration: 0.3,
+      });
+      gsap.to(block4.current.position, {
+        x: 0.2,
+        y: 0,
+        z: 0,
+        duration: 0.3,
+      });
+      gsap.to(block5.current.position, {
+        x: -0.2,
+        y: 0,
+        z: 0,
+        duration: 0.3,
+      });
+    } else {
+      gsap.to(block1.current.position, {
+        x: 0,
+        y: 0,
+        z: 0,
+        duration: 0.3,
+      });
+      gsap.to(block2.current.position, {
+        x: 0,
+        y: 0,
+        z: 0,
+        duration: 0.3,
+      });
+      gsap.to(block3.current.position, {
+        x: 0,
+        y: 0,
+        z: 0,
+        duration: 0.3,
+      });
+      gsap.to(block4.current.position, {
+        x: 0,
+        y: 0,
+        z: 0,
+        duration: 0.3,
+      });
+      gsap.to(block5.current.position, {
+        x: 0,
+        y: 0,
+        z: 0,
+        duration: 0.3,
+      });
+    }
   });
 
   return (
     <>
-      <group position={[0, -2, 0]} scale={1.5}>
-        <mesh>
+      <group
+        position={[0, -1.75, 0]}
+        scale={1.5}
+        rotation={[0, Math.PI, 0]}
+        ref={meshGroup}
+        onClick={() => {
+          setOnTap(!onTap);
+        }}
+      >
+        <mesh ref={block1}>
           <EidolonBlock
             meshGroup={meshGroup}
-            // texture={texture}
             colorMap={colorMap}
-            // roughnessMap={roughnessMap}
-            // normalMap={normalMap}
-            // metalnessMap={metalnessMap}
+            roughnessMap={roughnessMap}
+            normalMap={normalMap}
+            envMapIntensity={envMapIntensity}
+            position={[-0.393062, 0, 0]}
+            uTime={uniforms.uTime}
+            uShow={uniforms.uShow}
+            uAlpha={uniforms.uAlpha}
+          />
+        </mesh>
+        <mesh ref={block2}>
+          <EidolonBlock
+            meshGroup={meshGroup}
+            colorMap={colorMap}
+            roughnessMap={roughnessMap}
+            normalMap={normalMap}
+            envMapIntensity={envMapIntensity}
+            position={[0.393062, 0.393062, 0]}
+            uTime={uniforms.uTime}
+            uShow={uniforms.uShow}
+            uAlpha={uniforms.uAlpha}
+          />
+        </mesh>
+        <mesh ref={block3}>
+          <EidolonBlock
+            meshGroup={meshGroup}
+            colorMap={colorMap}
+            roughnessMap={roughnessMap}
+            normalMap={normalMap}
+            envMapIntensity={envMapIntensity}
+            position={[-0.393062, 0.786124, 0]}
+            uTime={uniforms.uTime}
+            uShow={uniforms.uShow}
+            uAlpha={uniforms.uAlpha}
+          />
+        </mesh>
+        <mesh ref={block4}>
+          <EidolonBlock
+            meshGroup={meshGroup}
+            colorMap={colorMap}
+            roughnessMap={roughnessMap}
+            normalMap={normalMap}
+            envMapIntensity={envMapIntensity}
+            position={[0.393062, 1.17919, 0]}
+            uTime={uniforms.uTime}
+            uShow={uniforms.uShow}
+            uAlpha={uniforms.uAlpha}
+          />
+        </mesh>
+        <mesh ref={block5}>
+          <EidolonBlock
+            meshGroup={meshGroup}
+            colorMap={colorMap}
+            roughnessMap={roughnessMap}
+            normalMap={normalMap}
+            envMapIntensity={envMapIntensity}
+            position={[-0.393062, 1.57225, 0]}
+            uTime={uniforms.uTime}
+            uShow={uniforms.uShow}
+            uAlpha={uniforms.uAlpha}
           />
         </mesh>
       </group>
