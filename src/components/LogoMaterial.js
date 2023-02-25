@@ -26,7 +26,9 @@ const LogoMaterial = (props) => {
         map={props.colorMap}
         metalnessMap={props.metalnessMap}
         roughnessMap={props.roughnessMap}
-        clearcoatNormalMap={props.normalMap}
+        normalMap={props.normalMap}
+        normalScale={0.5}
+        displacementMap={props.heightMap}
         envMapIntensity={props.envMapIntensity}
         onBeforeCompile={(shader) => {
           shader.uniforms.uTime = props.uTime;

@@ -14,7 +14,6 @@ const EidolonBlock = (props) => {
         {...props}
       >
         <LogoMaterial
-          attach="material"
           colorMap={props.colorMap}
           metalnessMap={props.metalnessMap}
           roughnessMap={props.roughnessMap}

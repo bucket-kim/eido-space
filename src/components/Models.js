@@ -17,10 +17,11 @@ const Models = (props) => {
 
   const [onTap, setOnTap] = useState(false);
 
-  const [colorMap, normalMap, roughnessMap] = useTexture([
+  const [colorMap, normalMap, roughnessMap, heightMap] = useTexture([
     "/images/ceramic/ceramic_BaseColor2.png",
     "/images/ceramic/ceramic_Normal2.png",
     "/images/ceramic/ceramic_Roughness2.png",
+    "/images/ceramic/ceramic_Height2.png",
   ]);
 
   colorMap.flipY = false;
@@ -29,7 +30,7 @@ const Models = (props) => {
 
   colorMap.encoding = THREE.sRGBEncoding;
 
-  const envMapIntensity = 0.05;
+  const envMapIntensity = 0.2;
 
   const uniforms = {
     uTime: {

@@ -38,7 +38,7 @@ const Scene = (props) => {
           {/* <ambientLight intensity={0.1} /> */}
           <directionalLight
             castShadow
-            position={[5, 15, 1]}
+            position={[5, 15, 10]}
             intensity={2.5}
             shadow-mapSize-height={2048}
             shadow-mapSize-width={2048}
