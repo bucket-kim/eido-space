@@ -1,5 +1,5 @@
 import { useFrame, useLoader } from "@react-three/fiber";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
 import { useTexture } from "@react-three/drei";
 import EidolonBlock from "./EidolonBlock";
@@ -30,19 +30,22 @@ const Models = (props) => {
 
   colorMap.encoding = THREE.sRGBEncoding;
 
-  const envMapIntensity = 0.2;
+  const envMapIntensity = 1;
 
-  const uniforms = {
-    uTime: {
-      value: 0,
-    },
-    uShow: {
-      value: false,
-    },
-    uAlpha: {
-      value: 1,
-    },
-  };
+  const uniforms = useMemo(
+    () => ({
+      uTime: {
+        value: 0,
+      },
+      uShow: {
+        value: true,
+      },
+      uAlpha: {
+        value: 1,
+      },
+    }),
+    []
+  );
 
   useFrame((state) => {
     gsap.to(meshGroup.current.rotation, {
@@ -50,12 +53,14 @@ const Models = (props) => {
       ease: "power2.easeIn",
     });
 
-    uniforms.uTime.value = state.clock.elapsedTime * 0.025;
-
     if (state.size.width <= 390) {
       meshGroup.current.scale.set(0.85, 0.85, 0.85);
       meshGroup.current.position.y = -0.5;
     }
+    uniforms.uTime.value = state.clock.elapsedTime * 0.01;
+    gsap.to(uniforms.uShow, {
+      value: !onTap ? 0 : 1,
+    });
   });
 
   useEffect(() => {
@@ -153,8 +158,8 @@ const Models = (props) => {
             envMapIntensity={envMapIntensity}
             position={[-0.381, 0, 0]}
             uTime={uniforms.uTime}
-            uShow={uniforms.uShow}
             uAlpha={uniforms.uAlpha}
+            uShow={uniforms.uShow}
           />
         </mesh>
         <mesh ref={block2} rotation={[0, Math.PI, 0]}>
@@ -165,8 +170,8 @@ const Models = (props) => {
             envMapIntensity={envMapIntensity}
             position={[0.381, 0.393062, 0]}
             uTime={uniforms.uTime}
-            uShow={uniforms.uShow}
             uAlpha={uniforms.uAlpha}
+            uShow={uniforms.uShow}
           />
         </mesh>
         <mesh ref={block3} rotation={[0, Math.PI, 0]}>
@@ -177,8 +182,8 @@ const Models = (props) => {
             envMapIntensity={envMapIntensity}
             position={[-0.381, 0.786124, 0]}
             uTime={uniforms.uTime}
-            uShow={uniforms.uShow}
             uAlpha={uniforms.uAlpha}
+            uShow={uniforms.uShow}
           />
         </mesh>
         <mesh ref={block4} rotation={[0, Math.PI, 0]}>
@@ -189,8 +194,8 @@ const Models = (props) => {
             envMapIntensity={envMapIntensity}
             position={[0.381, 1.17919, 0]}
             uTime={uniforms.uTime}
-            uShow={uniforms.uShow}
             uAlpha={uniforms.uAlpha}
+            uShow={uniforms.uShow}
           />
         </mesh>
         <mesh ref={block5} rotation={[0, Math.PI, 0]}>
@@ -201,8 +206,8 @@ const Models = (props) => {
             envMapIntensity={envMapIntensity}
             position={[-0.381, 1.57225, 0]}
             uTime={uniforms.uTime}
-            uShow={uniforms.uShow}
             uAlpha={uniforms.uAlpha}
+            uShow={uniforms.uShow}
           />
         </mesh>
       </group>

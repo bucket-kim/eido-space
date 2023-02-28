@@ -1,9 +1,12 @@
-import React from "react";
+import { useFrame } from "@react-three/fiber";
+import React, { useRef } from "react";
 import * as THREE from "three";
 
 const LogoMaterial = (props) => {
   return (
     <>
+      <shaderMaterial />
+
       {/* <meshPhysicalMaterial
             map={props.colorMap}
             metalnessMap={props.metalnessMap}

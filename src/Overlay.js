@@ -10,8 +10,6 @@ import { useIsSmall } from "./useMediaQuery";
 function Overlay(props) {
   const [isHover, setIsHover] = useState(false);
 
-  const isSmall = useIsSmall();
-
   useEffect(() => {
     gsap.to(".fade", {
       opacity: 0.2,
