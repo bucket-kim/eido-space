@@ -45,7 +45,11 @@ const Models = (props) => {
   };
 
   useFrame((state) => {
-    meshGroup.current.rotation.y = state.clock.elapsedTime * 0.35;
+    gsap.to(meshGroup.current.rotation, {
+      y: !onTap ? "+=0.025" : "+=0",
+      ease: "power2.easeIn",
+    });
+
     uniforms.uTime.value = state.clock.elapsedTime * 0.025;
 
     if (state.size.width <= 390) {
@@ -61,6 +65,7 @@ const Models = (props) => {
         y: 0,
         z: 0,
         duration: 0.3,
+        ease: "power2.out",
       });
 
       gsap.to(block2.current.position, {
@@ -68,24 +73,28 @@ const Models = (props) => {
         y: 0,
         z: 0,
         duration: 0.3,
+        ease: "power2.out",
       });
       gsap.to(block3.current.position, {
         x: 0.2,
         y: 0,
         z: 0,
         duration: 0.3,
+        ease: "power2.out",
       });
       gsap.to(block4.current.position, {
         x: -0.2,
         y: 0,
         z: 0,
         duration: 0.3,
+        ease: "power2.out",
       });
       gsap.to(block5.current.position, {
         x: 0.2,
         y: 0,
         z: 0,
         duration: 0.3,
+        ease: "power2.out",
       });
     } else {
       gsap.to(block1.current.position, {
@@ -93,30 +102,35 @@ const Models = (props) => {
         y: 0,
         z: 0,
         duration: 0.3,
+        ease: "power2.out",
       });
       gsap.to(block2.current.position, {
         x: 0,
         y: 0,
         z: 0,
         duration: 0.3,
+        ease: "power2.out",
       });
       gsap.to(block3.current.position, {
         x: 0,
         y: 0,
         z: 0,
         duration: 0.3,
+        ease: "power2.out",
       });
       gsap.to(block4.current.position, {
         x: 0,
         y: 0,
         z: 0,
         duration: 0.3,
+        ease: "power2.out",
       });
       gsap.to(block5.current.position, {
         x: 0,
         y: 0,
         z: 0,
         duration: 0.3,
+        ease: "power2.out",
       });
     }
   });
@@ -137,7 +151,7 @@ const Models = (props) => {
             roughnessMap={roughnessMap}
             normalMap={normalMap}
             envMapIntensity={envMapIntensity}
-            position={[-0.393062, 0, 0]}
+            position={[-0.381, 0, 0]}
             uTime={uniforms.uTime}
             uShow={uniforms.uShow}
             uAlpha={uniforms.uAlpha}
@@ -149,7 +163,7 @@ const Models = (props) => {
             roughnessMap={roughnessMap}
             normalMap={normalMap}
             envMapIntensity={envMapIntensity}
-            position={[0.393062, 0.393062, 0]}
+            position={[0.381, 0.393062, 0]}
             uTime={uniforms.uTime}
             uShow={uniforms.uShow}
             uAlpha={uniforms.uAlpha}
@@ -161,7 +175,7 @@ const Models = (props) => {
             roughnessMap={roughnessMap}
             normalMap={normalMap}
             envMapIntensity={envMapIntensity}
-            position={[-0.393062, 0.786124, 0]}
+            position={[-0.381, 0.786124, 0]}
             uTime={uniforms.uTime}
             uShow={uniforms.uShow}
             uAlpha={uniforms.uAlpha}
@@ -173,7 +187,7 @@ const Models = (props) => {
             roughnessMap={roughnessMap}
             normalMap={normalMap}
             envMapIntensity={envMapIntensity}
-            position={[0.393062, 1.17919, 0]}
+            position={[0.381, 1.17919, 0]}
             uTime={uniforms.uTime}
             uShow={uniforms.uShow}
             uAlpha={uniforms.uAlpha}
@@ -185,7 +199,7 @@ const Models = (props) => {
             roughnessMap={roughnessMap}
             normalMap={normalMap}
             envMapIntensity={envMapIntensity}
-            position={[-0.393062, 1.57225, 0]}
+            position={[-0.381, 1.57225, 0]}
             uTime={uniforms.uTime}
             uShow={uniforms.uShow}
             uAlpha={uniforms.uAlpha}
