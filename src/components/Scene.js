@@ -61,7 +61,7 @@ const Scene = (props) => {
             <EffectComposer>
               <Bloom
                 luminanceThreshold={1}
-                intensity={0.2}
+                intensity={0.5}
                 levels={9}
                 mipmapBlur
               />

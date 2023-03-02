@@ -1,10 +1,27 @@
-import React, { useRef } from "react";
-import * as THREE from "three";
+import { MeshTransmissionMaterial } from "@react-three/drei";
+import React from "react";
 
 const LogoMaterial = (props) => {
   return (
     <>
-      <meshPhysicalMaterial
+      <MeshTransmissionMaterial
+        resolution={1024}
+        distortion={0.25}
+        thickness={1}
+        color={"#ABB3B4"}
+        anisotropy={0.5}
+        roughnessMap={props.roughnessMap}
+        normalMap={props.normalMap}
+        normalScale={0.5}
+        metalness={props.metalness}
+        toneMapped={false}
+        transmission={1}
+        alphaMap={props.emissionMap}
+        ior={2.42}
+        reflectivity={0.5}
+        envMapIntensity={3}
+      />
+      {/* <meshPhysicalMaterial
         map={props.colorMap}
         metalnessMap={props.metalnessMap}
         roughnessMap={props.roughnessMap}
@@ -13,15 +30,15 @@ const LogoMaterial = (props) => {
         ior={2.42}
         reflectivity={0.5}
         envMap={props.texture}
-        envMapIntensity={5}
-        clearcoat={0.5}
+        envMapIntensity={3}
+        clearcoat={1}
         transparent={true}
-        clearcoatNormalScale={1.5}
-        opacity={0.75}
+        clearcoatNormalScale={1}
+        opacity={0.5}
         clearcoatNormalMap={props.normalMap}
         alphaMap={props.emissionMap}
         toneMapped={false}
-      />
+      /> */}
       {/* <meshPhysicalMaterial
         color={props.color}
         envMap={props.envMap}

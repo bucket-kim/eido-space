@@ -4,7 +4,7 @@ import LogoMaterial from "./LogoMaterial";
 import gsap from "gsap";
 
 const EidolonBlock = (props) => {
-  const { nodes } = useGLTF("/models/eidolon.glb");
+  const { nodes } = useGLTF("/models/eidolon2.glb");
 
   const block1 = useRef();
   const block2 = useRef();
