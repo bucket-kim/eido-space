@@ -5,7 +5,6 @@ import { TypeAnimation } from "react-type-animation";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
-import { useIsSmall } from "./useMediaQuery";
 
 function Overlay(props) {
   const [isHover, setIsHover] = useState(false);

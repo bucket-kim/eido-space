@@ -3,7 +3,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import "../App.css";
 import * as THREE from "three";
 import Models from "./Models";
-import { Suspense, useRef } from "react";
+import { Suspense } from "react";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 
 const Rig = () => {
@@ -20,14 +20,15 @@ const Rig = () => {
 };
 
 const Scene = (props) => {
-  const windowRef = useRef();
-
   return (
     <>
       <div className="scene">
         <Canvas
-          ref={windowRef}
-          gl={{ antialias: true }}
+          gl={{
+            antialias: true,
+            outputEncoding: THREE.sRGBEncoding,
+            toneMappingExposure: 1.25,
+          }}
           shadows
           camera={{
             fov: 45,
@@ -35,25 +36,41 @@ const Scene = (props) => {
           }}
         >
           <color args={[0x000000]} attach="background" />
-          {/* <ambientLight intensity={0.1} /> */}
-          <directionalLight
+          {/* <directionalLight
             castShadow
-            position={[5, 15, 10]}
-            intensity={2.5}
+            position={[5, 20, 10]}
+            intensity={1}
             shadow-mapSize-height={2048}
             shadow-mapSize-width={2048}
-          />
-          {/* <pointLight position={[-20, 5, 0]} intensity={0.5} /> */}
-
+          /> */}
+          {/* <hemisphereLight
+            skyColor={0x000000}
+            groundColor={0x000000}
+            intensity={0.5}
+          /> */}
+          {/* <rectAreaLight
+            width={3}
+            height={3}
+            position={[2, -0.5, 7]}
+            lookAt={[0, 0, 0]}
+            intensity={2.5}
+            penumbra={2}
+          /> */}
           <Suspense>
             <Models />
+            <EffectComposer>
+              <Bloom
+                luminanceThreshold={1}
+                intensity={0.2}
+                levels={9}
+                mipmapBlur
+              />
+            </EffectComposer>
           </Suspense>
-          <Environment files="/images/studio.hdr" background={false} />
-          {/* <Environment preset="studio" background={false} /> */}
+          <Environment files="/images/royal_esplanade.hdr" background={false} />
           <OrbitControls
             enabled={true}
             minPolarAngle={0}
-            // maxPolarAngle={Math.PI / 1.5}
             maxDistance={10}
             minDistance={2}
           />

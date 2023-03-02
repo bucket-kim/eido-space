@@ -1,42 +1,40 @@
-import { useFrame } from "@react-three/fiber";
 import React, { useRef } from "react";
 import * as THREE from "three";
 
 const LogoMaterial = (props) => {
   return (
     <>
-      <shaderMaterial />
-
-      {/* <meshPhysicalMaterial
-            map={props.colorMap}
-            metalnessMap={props.metalnessMap}
-            roughnessMap={props.roughnessMap}
-            transmission={1}
-            thickness={2.42}
-            ior={2.42}
-            reflectivity={0.5}
-            envMap={props.texture}
-            envMapIntensity={5}
-            clearcoat={1}
-            transparent={true}
-            clearcoatNormalScale={0.5}
-            opacity={0.75}
-            clearcoatNormalMap={props.normalMap}
-            alphaMap={props.emissionMap}
-            toneMapped={false}
-          /> */}
-      <meshStandardMaterial
+      <meshPhysicalMaterial
         map={props.colorMap}
         metalnessMap={props.metalnessMap}
         roughnessMap={props.roughnessMap}
+        transmission={1}
+        thickness={2.42}
+        ior={2.42}
+        reflectivity={0.5}
+        envMap={props.texture}
+        envMapIntensity={5}
+        clearcoat={0.5}
+        transparent={true}
+        clearcoatNormalScale={1.5}
+        opacity={0.75}
+        clearcoatNormalMap={props.normalMap}
+        alphaMap={props.emissionMap}
+        toneMapped={false}
+      />
+      {/* <meshPhysicalMaterial
+        color={props.color}
+        envMap={props.envMap}
+        metalnessMap={props.metalnessMap}
+        roughnessMap={props.roughnessMap}
         normalMap={props.normalMap}
-        normalScale={0.5}
+        normalScale={1}
         displacementMap={props.heightMap}
         envMapIntensity={props.envMapIntensity}
         onBeforeCompile={(shader) => {
           shader.uniforms.uTime = props.uTime;
           shader.uniforms.uShow = props.uShow;
-          shader.uniforms.uAlpha = props.uAlpha;
+          shader.uniforms.uColor = props.uColor;
 
           shader.vertexShader = shader.vertexShader.replace(
             "#ifdef USE_TRANSMISSION",
@@ -58,7 +56,7 @@ const LogoMaterial = (props) => {
 
           shader.fragmentShader =
             `
-                uniform float uAlpha;
+                uniform vec3 uColor;
 
                 uniform bool uShow;
 
@@ -122,20 +120,21 @@ const LogoMaterial = (props) => {
 
                 if(uShow) {
 
-                  float strength =  step(0.5, sin(cnoise((vUv + uTime) * 15.0) * 10.0));
+                  // float strength =  step(0.5, sin(cnoise((vUv + uTime) * 15.0) * 10.0));
   
-                  vec3 blackColor = vec3(vUv, 1.0);
+                  // vec3 blackColor = vec3(0.75, 0.75 , 0.75);
   
-                  vec3 uvColor = vec3(1.0);
+                  // vec3 uvColor = vec3(1.0);
   
-                  vec3 mixColor = mix(uvColor, blackColor, strength);
+                  // vec3 mixColor = mix( uvColor, blackColor, strength);
+
   
-                  gl_FragColor *= vec4(mixColor, uAlpha);
+                  gl_FragColor = vec4(uColor, 1.0);
                 } 
               `
           );
         }}
-      />
+      /> */}
     </>
   );
 };
