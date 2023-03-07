@@ -1,6 +1,6 @@
-import { useFrame, useLoader } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
+
 import { useTexture } from "@react-three/drei";
 import EidolonBlock from "./EidolonBlock";
 import * as THREE from "three";
@@ -9,8 +9,6 @@ import { Color } from "three";
 
 const Models = (props) => {
   const meshGroup = useRef();
-
-  const texture = useLoader(RGBELoader, "/images/royal_esplanade.hdr");
 
   const [onTap, setOnTap] = useState(false);
 
@@ -48,35 +46,36 @@ const Models = (props) => {
     []
   );
 
-  useFrame((state) => {
-    gsap.to(meshGroup.current.rotation, {
-      y: !onTap ? "+=0.02" : "+=0",
-      ease: "power2.easeIn",
-    });
-    // meshGroup.current.rotation.y = state.clock.elapsedTime * 0.2;
+  useFrame(
+    (state) => {
+      gsap.to(meshGroup.current.rotation, {
+        y: !onTap ? "+=0.02" : "+=0",
+        ease: "power2",
+      });
 
-    if (state.size.width <= 390) {
-      meshGroup.current.scale.set(0.85, 0.85, 0.85);
-      meshGroup.current.position.y = -0.5;
-    }
+      window.addEventListener("mousedown", () => {
+        setOnTap(true);
+      });
+      window.addEventListener("mouseup", () => {
+        setOnTap(false);
+      });
 
-    uniforms.uTime.value = state.clock.elapsedTime * 0.01;
-  });
+      if (state.size.width <= 390) {
+        meshGroup.current.scale.set(0.85, 0.85, 0.85);
+        meshGroup.current.position.y = -0.5;
+      }
+
+      uniforms.uTime.value = state.clock.elapsedTime * 0.01;
+    },
+    [meshGroup]
+  );
 
   return (
     <>
-      <group
-        position={[0, -1.75, 0]}
-        scale={1.5}
-        ref={meshGroup}
-        onClick={() => {
-          setOnTap(!onTap);
-        }}
-      >
-        <mesh rotation={[0, Math.PI, 0]}>
+      <group position={[0, -1.75, 0]} scale={1.5} ref={meshGroup}>
+        <mesh rotation={[0, Math.PI, 0]} ref={meshGroup}>
           <EidolonBlock
             color={uniforms.uColor.value}
-            // texture={texture}
             roughnessMap={roughnessMap}
             normalMap={normalMap}
             envMapIntensity={envMapIntensity}

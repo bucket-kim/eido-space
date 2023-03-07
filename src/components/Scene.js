@@ -3,8 +3,9 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import "../App.css";
 import * as THREE from "three";
 import Models from "./Models";
-import { Suspense } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
+import SmokeBackground from "./SmokeBackground";
 
 const Rig = () => {
   const { camera, mouse } = useThree();
@@ -19,7 +20,7 @@ const Rig = () => {
   );
 };
 
-const Scene = (props) => {
+const Scene = () => {
   return (
     <>
       <div className="scene">
@@ -33,35 +34,21 @@ const Scene = (props) => {
           camera={{
             fov: 45,
             position: [0, 1, 6],
+            far: 10000,
+            near: 0.01,
           }}
         >
           <color args={[0x000000]} attach="background" />
-          {/* <directionalLight
-            castShadow
-            position={[5, 20, 10]}
-            intensity={1}
-            shadow-mapSize-height={2048}
-            shadow-mapSize-width={2048}
-          /> */}
-          {/* <hemisphereLight
-            skyColor={0x000000}
-            groundColor={0x000000}
-            intensity={0.5}
-          /> */}
-          {/* <rectAreaLight
-            width={3}
-            height={3}
-            position={[2, -0.5, 7]}
-            lookAt={[0, 0, 0]}
-            intensity={2.5}
-            penumbra={2}
-          /> */}
+
           <Suspense>
-            <Models />
+            <mesh>
+              <Models />
+            </mesh>
+            {/* <SmokeBackground /> */}
             <EffectComposer>
               <Bloom
                 luminanceThreshold={1}
-                intensity={0.5}
+                intensity={0.25}
                 levels={9}
                 mipmapBlur
               />
