@@ -26,7 +26,6 @@ function Overlay(props) {
         initial={{
           y: 0,
         }}
-        // animate="animate"
         animate={{
           y: props.isClicked ? -40 : 0,
         }}
@@ -39,63 +38,52 @@ function Overlay(props) {
 
           <div className="flex flex-col items-end sm:text-[10px]">
             <TypeAnimation
-              sequence={["Welcome to Eidolon your new digital galary."]}
+              sequence={["Welcome to Eidolon."]}
               cursor={false}
               speed={60}
             />
-            <div className="flex flex-col items-end fade">
-              <div className="flex">
-                <TypeAnimation
-                  sequence={[3300, "Contact us at "]}
-                  cursor={false}
-                  wrapper={"div"}
-                  speed={60}
-                />
-                <TypeAnimation
-                  sequence={[3950, "connect@eidolon.com"]}
-                  cursor={false}
-                  wrapper={"a"}
-                  className={"indent-1 text-blue-500"}
-                />
-              </div>
-              <TypeAnimation
-                sequence={[5250, "Created using Web3"]}
-                cursor={false}
-                wrapper={"div"}
-                className={""}
-                speed={60}
-              />
-              <TypeAnimation
-                sequence={[6000, "Axe coming 5.9.2024"]}
-                cursor={false}
-                wrapper={"div"}
-                className={""}
-                speed={60}
-              />
-              <TypeAnimation
-                sequence={[7000, "Join the collective"]}
-                cursor={false}
-                wrapper={"div"}
-                className={"text-red-500"}
-                speed={60}
-              />
-              <div className="flex">
-                <TypeAnimation
-                  sequence={[8000, "Follow us on social media"]}
-                  cursor={false}
-                  wrapper={"div"}
-                  className={""}
-                  speed={60}
-                />
-                <TypeAnimation
-                  sequence={[8950, " @eidolon"]}
-                  cursor={false}
-                  wrapper={"a"}
-                  className={"indent-1 text-yellow-300"}
-                  speed={60}
-                />
-              </div>
-            </div>
+
+            <TypeAnimation
+              sequence={[2200, "In a moment, you'll enter a space"]}
+              cursor={false}
+              wrapper={"div"}
+              speed={60}
+            />
+            <TypeAnimation
+              sequence={[3700, "that transcends place and time"]}
+              cursor={false}
+              wrapper={"a"}
+            />
+            <TypeAnimation
+              sequence={[5800, "Where works of art finds an ever-life"]}
+              cursor={false}
+              wrapper={"div"}
+              className={""}
+              speed={60}
+            />
+            <TypeAnimation
+              sequence={[7700, "Where you can explore, experience, own"]}
+              cursor={false}
+              wrapper={"div"}
+              className={""}
+              speed={60}
+            />
+            <TypeAnimation
+              sequence={[9500, "We're community of creators"]}
+              cursor={false}
+              wrapper={"div"}
+              speed={60}
+            />
+            <TypeAnimation
+              sequence={[
+                10500,
+                "Building a different kind of digital and physical marketplace",
+              ]}
+              cursor={false}
+              wrapper={"div"}
+              className={""}
+              speed={60}
+            />
           </div>
         </div>
         <Scene />

@@ -50,13 +50,22 @@ const Models = (props) => {
     (state) => {
       gsap.to(meshGroup.current.rotation, {
         y: !onTap ? "+=0.02" : "+=0",
-        ease: "power2",
+        ease: "power2.easeIn",
       });
 
-      window.addEventListener("mousedown", () => {
+      window.addEventListener("mousedown", (e) => {
+        e.preventDefault();
+        setOnTap(true);
+      });
+      window.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+
         setOnTap(true);
       });
       window.addEventListener("mouseup", () => {
+        setOnTap(false);
+      });
+      window.addEventListener("touchend", () => {
         setOnTap(false);
       });
 

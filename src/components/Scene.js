@@ -41,9 +41,7 @@ const Scene = () => {
           <color args={[0x000000]} attach="background" />
 
           <Suspense>
-            <mesh>
-              <Models />
-            </mesh>
+            <Models />
             {/* <SmokeBackground /> */}
             <EffectComposer>
               <Bloom
