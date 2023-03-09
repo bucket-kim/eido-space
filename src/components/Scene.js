@@ -42,7 +42,6 @@ const Scene = () => {
 
           <Suspense>
             <Models />
-            {/* <SmokeBackground /> */}
             <EffectComposer>
               <Bloom
                 luminanceThreshold={1}
@@ -51,6 +50,7 @@ const Scene = () => {
                 mipmapBlur
               />
             </EffectComposer>
+            <SmokeBackground />
           </Suspense>
           <Environment files="/images/royal_esplanade.hdr" background={false} />
           <OrbitControls
