@@ -1,13 +1,22 @@
 import "./App.css";
 import Overlay from "./Overlay";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useIsSmall } from "./useMediaQuery";
 
 function App() {
   const [isClicked, setIsClicked] = useState(false);
 
   const isSmall = useIsSmall();
+
+  useEffect(() => {
+    const documentHeight = () => {
+      const doc = document.documentElement;
+      doc.style.setProperty("--doc-height", `${window.innerHeight}px`);
+    };
+    window.addEventListener("resize", documentHeight);
+    documentHeight();
+  }, []);
 
   return (
     <div className="overflow-y-hidden h-full relative">
@@ -19,7 +28,8 @@ function App() {
       />
 
       <motion.button
-        className="  absolute bg-slate-50 w-full text-center -bottom-10 h-10 sm:bottom-[4.25rem]"
+        className="  absolute bg-slate-50 w-full text-center -bottom-10 h-10 
+        "
         initial={{
           y: 0,
         }}

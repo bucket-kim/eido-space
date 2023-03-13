@@ -22,7 +22,7 @@ function Overlay(props) {
   return (
     <>
       <motion.div
-        className="h-screen"
+        className={`h-screen`}
         initial={{
           y: 0,
         }}
@@ -88,7 +88,7 @@ function Overlay(props) {
         </div>
         <Scene />
         <motion.div
-          className="w-full text-white flex justify-between absolute bottom-4 px-24 text-[12px] z-10 sm:text-[12px] sm:pb-[1em] sm:px-10 sm:bottom-[6rem]
+          className="w-full text-white flex justify-between absolute bottom-4 px-24 text-[12px] z-10 sm:text-[12px] sm:px-10 
            "
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
