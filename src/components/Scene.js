@@ -7,6 +7,7 @@ import { Suspense, useEffect, useRef } from "react";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import SmokeBackground from "./SmokeBackground";
 import Grid from "./Grid";
+import SmokeParticle from "./SmokeParticle";
 
 const Rig = () => {
   const { camera, mouse } = useThree();
@@ -52,9 +53,9 @@ const Scene = () => {
                 mipmapBlur
               />
             </EffectComposer>
-            <SmokeBackground />
             <Grid />
-            {/* <gridHelper args={[100, 100]} position={[0, -8, 0]} /> */}
+            <SmokeBackground />
+            <SmokeParticle />
           </Suspense>
           <Environment files="/images/royal_esplanade.hdr" background={false} />
           <OrbitControls

@@ -13,7 +13,7 @@ const Grid = (props) => {
         value: 0,
       },
       uColor: {
-        value: new THREE.Color(0x7fb2ff),
+        value: new THREE.Color(0xb6cfed),
       },
       uOverlay: {
         value: new THREE.TextureLoader().load("./images/alpha.png"),

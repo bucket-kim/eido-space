@@ -7,7 +7,7 @@ import { useFrame } from "@react-three/fiber";
 function SmokeBackground() {
   const points = useRef();
 
-  const count = 1000;
+  const count = 800;
 
   const uniforms = useMemo(
     () => ({
@@ -20,7 +20,7 @@ function SmokeBackground() {
       },
       uTime: { value: 0.0 },
 
-      uRadius: { value: 2.0 },
+      uRadius: { value: 1.5 },
     }),
     []
   );
