@@ -6,6 +6,7 @@ import Models from "./Models";
 import { Suspense, useEffect, useRef } from "react";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import SmokeBackground from "./SmokeBackground";
+import Grid from "./Grid";
 
 const Rig = () => {
   const { camera, mouse } = useThree();
@@ -29,6 +30,7 @@ const Scene = () => {
             antialias: true,
             outputEncoding: THREE.sRGBEncoding,
             toneMappingExposure: 1.25,
+            alpha: false,
           }}
           shadows
           camera={{
@@ -51,6 +53,8 @@ const Scene = () => {
               />
             </EffectComposer>
             <SmokeBackground />
+            <Grid />
+            {/* <gridHelper args={[100, 100]} position={[0, -8, 0]} /> */}
           </Suspense>
           <Environment files="/images/royal_esplanade.hdr" background={false} />
           <OrbitControls

@@ -19,7 +19,7 @@ function App() {
   }, []);
 
   return (
-    <div className="overflow-y-hidden h-full relative">
+    <div className="app__body">
       <Overlay
         handleClick={() => {
           setIsClicked(!isClicked);

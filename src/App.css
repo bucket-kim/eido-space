@@ -1,8 +1,9 @@
-body {
+.app__body {
   min-height: 100vh;
   min-height: -webkit-fill-available;
 }
 
 html {
-  height: -webkit-fill-avaiable;
+  height: -webkit-fill-available;
+  overflow: hidden;
 }
