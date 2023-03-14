@@ -7,17 +7,6 @@ import { useIsSmall } from "./useMediaQuery";
 function App() {
   const [isClicked, setIsClicked] = useState(false);
 
-  const isSmall = useIsSmall();
-
-  useEffect(() => {
-    const documentHeight = () => {
-      const doc = document.documentElement;
-      doc.style.setProperty("--doc-height", `${window.innerHeight}px`);
-    };
-    window.addEventListener("resize", documentHeight);
-    documentHeight();
-  }, []);
-
   return (
     <div className="app__body">
       <Overlay

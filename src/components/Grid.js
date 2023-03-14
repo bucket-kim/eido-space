@@ -35,7 +35,6 @@ const Grid = (props) => {
           fragmentShader={fragmentShader}
           vertexShader={vertexShader}
           transparent={true}
-          opacity={0.15}
         />
       </mesh>
     </>

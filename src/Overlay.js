@@ -102,6 +102,7 @@ function Overlay(props) {
               y: isHover ? -36 : 0,
             }}
             className={"cursor-pointer"}
+            onTouchStart={() => {}}
           >
             #0001
             <div>
