@@ -142,7 +142,7 @@ void main() {
   float v = line(1., vec3(8.0)) + line(1., vec3(8.0));
 
   vec3 c = v * vec3(uColor) ;
-  c = mix(1.0 - vec3(1.0), c * 2.5, v * 1.) ;
+  c = mix(1.0 - vec3(1.0), c * 2.5, v * 0.5) ;
 
 
   vec4 overlaySample = texture2D(uOverlay, vUv);

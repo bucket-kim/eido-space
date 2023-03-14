@@ -16,7 +16,7 @@ const Grid = (props) => {
         value: new THREE.Color(0x7fb2ff),
       },
       uOverlay: {
-        value: new THREE.TextureLoader().load("./images/alpha2.png"),
+        value: new THREE.TextureLoader().load("./images/alpha.png"),
       },
     }),
     []
@@ -35,6 +35,7 @@ const Grid = (props) => {
           fragmentShader={fragmentShader}
           vertexShader={vertexShader}
           transparent={true}
+          opacity={0.15}
         />
       </mesh>
     </>
