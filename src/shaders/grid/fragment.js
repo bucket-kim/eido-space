@@ -145,7 +145,7 @@ void main() {
 
   vec3 c = v * vec3(uColor);
   // vec3 c = v * vec3(uColor) * (cnoise(vec4(pos * 0.025, 1.0))+ 0.5) ;
-  c = mix(1.0 - vec3(1.0), c * 2.5, v * 1.) * 1.0;
+  // c = mix(1.0 - vec3(1.0), c * 2.5, v * 1.) * 1.0;
 
 
   vec4 overlaySample = texture2D(uOverlay, vUv);
