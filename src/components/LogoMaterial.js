@@ -10,6 +10,7 @@ const LogoMaterial = (props) => {
         thickness={1}
         color={"#ABB3B4"}
         anisotropy={0.5}
+        // transparent={true}
         roughnessMap={props.roughnessMap}
         normalMap={props.normalMap}
         normalScale={0.5}
@@ -18,7 +19,7 @@ const LogoMaterial = (props) => {
         transmission={1}
         alphaMap={props.emissionMap}
         ior={2.42}
-        reflectivity={0.5}
+        reflectivity={0.75}
         envMapIntensity={3}
       />
       {/* <meshPhysicalMaterial

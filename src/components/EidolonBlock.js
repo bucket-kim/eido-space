@@ -8,7 +8,7 @@ import vertexShader from "../shaders/material/vertex";
 import fragmentShader from "../shaders/material/fragment";
 
 const EidolonBlock = (props) => {
-  const { nodes } = useGLTF("/models/eidolon2.glb");
+  const { nodes } = useGLTF("/models/eidolon3.glb");
 
   const block1 = useRef();
   const block2 = useRef();
@@ -69,14 +69,9 @@ const EidolonBlock = (props) => {
         castShadow
         receiveShadow
         geometry={nodes.Eidolon_Geo001_geo.geometry}
-        position={[-0.388531, 0, 0]}
+        position={[-0.5, 0, 0]}
         ref={block1}
       >
-        {/* <shaderMaterial
-          vertexShader={vertexShader}
-          fragmentShader={fragmentShader}
-          uniforms={uniforms}
-        /> */}
         <LogoMaterial
           color={props.color}
           texture={props.texture}
@@ -96,7 +91,7 @@ const EidolonBlock = (props) => {
         castShadow
         receiveShadow
         geometry={nodes.Eidolon_Geo002_geo.geometry}
-        position={[0.388531, 0.397563, 0]}
+        position={[0.5, 0.5, 0]}
       >
         <LogoMaterial
           color={props.color}
@@ -117,7 +112,7 @@ const EidolonBlock = (props) => {
         castShadow
         receiveShadow
         geometry={nodes.Eidolon_Geo003_geo.geometry}
-        position={[-0.388531, 0.795126, 0]}
+        position={[-0.5, 1, 0]}
       >
         <LogoMaterial
           color={props.color}
@@ -138,7 +133,7 @@ const EidolonBlock = (props) => {
         castShadow
         receiveShadow
         geometry={nodes.Eidolon_Geo004_geo.geometry}
-        position={[0.388531, 1.19269, 0]}
+        position={[0.5, 1.5, 0]}
       >
         <LogoMaterial
           color={props.color}
@@ -159,7 +154,7 @@ const EidolonBlock = (props) => {
         castShadow
         receiveShadow
         geometry={nodes.Eidolon_Geo005_geo.geometry}
-        position={[-0.388531, 1.59025, 0]}
+        position={[-0.5, 2, 0]}
       >
         <LogoMaterial
           color={props.color}

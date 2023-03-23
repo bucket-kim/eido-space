@@ -53,9 +53,9 @@ const Scene = () => {
                 mipmapBlur
               />
             </EffectComposer>
-            <Grid />
+            {/* <Grid /> */}
             <SmokeBackground />
-            <SmokeParticle />
+            {/* <SmokeParticle /> */}
           </Suspense>
           <Environment files="/images/royal_esplanade.hdr" background={false} />
           <OrbitControls
