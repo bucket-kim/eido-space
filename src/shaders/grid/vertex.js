@@ -16,8 +16,8 @@ void main() {
   vec3 p = position;
 
   vec4 modelPosition = modelMatrix * vec4(pos, 1.0);
-  modelPosition.y += sin(modelPosition.x * 0.05 ) * 1.0;
-  modelPosition.y += sin(modelPosition.z * 0.05 ) * 1.0;
+  modelPosition.y += sin(modelPosition.x * uTime * 0.002) * 1.0;
+  modelPosition.y += sin(modelPosition.z * uTime * 0.002 ) * 1.0;
 
   vZ = modelPosition.y;
 

@@ -1,7 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useGLTF } from "@react-three/drei";
 import LogoMaterial from "./LogoMaterial";
+import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
 import gsap from "gsap";
+import * as THREE from "three";
+import vertexShader from "../shaders/material/vertex";
+import fragmentShader from "../shaders/material/fragment";
 
 const EidolonBlock = (props) => {
   const { nodes } = useGLTF("/models/eidolon2.glb");
@@ -12,86 +16,47 @@ const EidolonBlock = (props) => {
   const block4 = useRef();
   const block5 = useRef();
 
+  // const backgroundHDRI = new RGBELoader().load("./images/royal_esplanade.hdr");
+  const backgroundHDRI = new THREE.CubeTextureLoader()
+    .setPath("./images/hdri/")
+    .load(["px.png", "nx.png", "py.png", "ny.png", "pz.png", "nz.png"]);
+
   const meshGroup = useRef();
 
   const [onTap, setOnTap] = useState(false);
 
-  // useEffect(() => {
-  //   if (onTap) {
-  //     gsap.to(block1.current.position, {
-  //       x: -0.6,
-  //       y: 0,
-  //       z: 0,
-  //       duration: 0.3,
-  //       ease: "power2.out",
-  //     });
+  const diffuse = new THREE.TextureLoader().load(
+    "/images/crystal/eidolon_Roughness.png"
+  );
+  const roughness = new THREE.TextureLoader().load(
+    "/images/crystal/eidolon_Roughness.png"
+  );
+  // const metalness = new THREE.TextureLoader().load(
+  //   "/images/crystal/eidolon_Metalness.png"
+  // );
+  const normal = new THREE.TextureLoader().load(
+    "/images/crystal/eidolon_Normal.png"
+  );
 
-  //     gsap.to(block2.current.position, {
-  //       x: 0.6,
-  //       y: 0.397563,
-  //       z: 0,
-  //       duration: 0.3,
-  //       ease: "power2.out",
-  //     });
-  //     gsap.to(block3.current.position, {
-  //       x: -0.6,
-  //       y: 0.397563 * 2,
-  //       z: 0,
-  //       duration: 0.3,
-  //       ease: "power2.out",
-  //     });
-  //     gsap.to(block4.current.position, {
-  //       x: 0.6,
-  //       y: 0.397563 * 3,
-  //       z: 0,
-  //       duration: 0.3,
-  //       ease: "power2.out",
-  //     });
-  //     gsap.to(block5.current.position, {
-  //       x: -0.6,
-  //       y: 0.397563 * 4,
-  //       z: 0,
-  //       duration: 0.3,
-  //       ease: "power2.out",
-  //     });
-  //   } else {
-  //     gsap.to(block1.current.position, {
-  //       x: -0.388531,
-  //       y: 0,
-  //       z: 0,
-  //       duration: 0.3,
-  //       ease: "power2.out",
-  //     });
-  //     gsap.to(block2.current.position, {
-  //       x: 0.388531,
-  //       y: 0.397563,
-  //       z: 0,
-  //       duration: 0.3,
-  //       ease: "power2.out",
-  //     });
-  //     gsap.to(block3.current.position, {
-  //       x: -0.388531,
-  //       y: 0.397563 * 2,
-  //       z: 0,
-  //       duration: 0.3,
-  //       ease: "power2.out",
-  //     });
-  //     gsap.to(block4.current.position, {
-  //       x: 0.388531,
-  //       y: 0.397563 * 3,
-  //       z: 0,
-  //       duration: 0.3,
-  //       ease: "power2.out",
-  //     });
-  //     gsap.to(block5.current.position, {
-  //       x: -0.388531,
-  //       y: 0.397563 * 4,
-  //       z: 0,
-  //       duration: 0.3,
-  //       ease: "power2.out",
-  //     });
-  //   }
-  // });
+  diffuse.flipY = false;
+
+  const uniforms = useMemo(
+    () => ({
+      uBaseColor: {
+        value: diffuse,
+      },
+      uSpecMap: {
+        value: backgroundHDRI,
+      },
+      uRoughness: {
+        value: roughness,
+      },
+      uNormal: {
+        value: normal,
+      },
+    }),
+    []
+  );
 
   return (
     <group
@@ -107,6 +72,11 @@ const EidolonBlock = (props) => {
         position={[-0.388531, 0, 0]}
         ref={block1}
       >
+        {/* <shaderMaterial
+          vertexShader={vertexShader}
+          fragmentShader={fragmentShader}
+          uniforms={uniforms}
+        /> */}
         <LogoMaterial
           color={props.color}
           texture={props.texture}

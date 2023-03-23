@@ -13,7 +13,7 @@ const Grid = (props) => {
         value: 0,
       },
       uColor: {
-        value: new THREE.Color(0xb6cfed),
+        value: new THREE.Color(0x67aefc),
       },
       uOverlay: {
         value: new THREE.TextureLoader().load("./images/alpha.png"),
@@ -28,8 +28,8 @@ const Grid = (props) => {
 
   return (
     <>
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -28, 0]}>
-        <planeGeometry args={[640, 640, 1600, 1600]} />
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -6, 0]}>
+        <planeGeometry args={[200, 200, 1600, 1600]} />
         <shaderMaterial
           uniforms={uniforms}
           fragmentShader={fragmentShader}
