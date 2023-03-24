@@ -36,52 +36,73 @@ function Overlay(props) {
         <div className="w-full flex justify-between text-white absolute z-10 text-[12px] px-24 pt-[6em] sm:px-10 sm:pt-[2.5em]">
           <Logo />
 
-          <div className="flex flex-col items-end sm:text-[10px]">
+          <div className="flex flex-col items-start sm:text-[10px] w-[22em]">
             <TypeAnimation
-              sequence={["Welcome to Eidolon."]}
+              sequence={["function Welcome_to_Eidolon() {"]}
               cursor={false}
               speed={60}
             />
 
             <TypeAnimation
-              sequence={[2200, "In a moment, you'll enter a space"]}
+              sequence={[2500, "const newWorld = '"]}
               cursor={false}
               wrapper={"div"}
               speed={60}
+              style={{ paddingLeft: "2em" }}
             />
             <TypeAnimation
-              sequence={[3700, "that transcends place and time"]}
+              sequence={[3600, "In a moment, you'll enter a space"]}
+              cursor={false}
+              wrapper={"div"}
+              speed={60}
+              style={{ paddingLeft: "4em" }}
+            />
+            <TypeAnimation
+              sequence={[5400, "that transcends place and time"]}
               cursor={false}
               wrapper={"a"}
+              style={{ paddingLeft: "4em" }}
             />
             <TypeAnimation
-              sequence={[5800, "Where works of art finds an ever-life"]}
+              sequence={[7400, "Where works of art finds an ever-life"]}
               cursor={false}
               wrapper={"div"}
               className={""}
+              style={{ paddingLeft: "4em" }}
               speed={60}
             />
             <TypeAnimation
-              sequence={[7700, "Where you can explore, experience, own"]}
+              sequence={[9200, "Where you can explore, experience, and own"]}
               cursor={false}
               wrapper={"div"}
               className={""}
+              style={{ paddingLeft: "4em" }}
               speed={60}
             />
             <TypeAnimation
-              sequence={[9500, "We're community of creators"]}
+              sequence={[11500, "We're community of creators"]}
               cursor={false}
               wrapper={"div"}
+              style={{ paddingLeft: "4em" }}
               speed={60}
             />
             <TypeAnimation
               sequence={[
-                10500,
-                "Building a different kind of digital and physical marketplace",
+                12500,
+                "Building a different kind of digital and physical marketplace'",
               ]}
               cursor={false}
               wrapper={"div"}
               className={""}
+              style={{ paddingLeft: "4em" }}
+              speed={80}
+            />
+            <TypeAnimation
+              sequence={[14500, "return (newWorld) }"]}
+              cursor={false}
+              wrapper={"div"}
+              className={""}
+              style={{ paddingLeft: "2em" }}
               speed={60}
             />
           </div>

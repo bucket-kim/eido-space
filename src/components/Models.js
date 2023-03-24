@@ -88,8 +88,8 @@ const Models = (props) => {
 
   return (
     <>
-      <group position={[0, -1.75, 0]} scale={1.5} ref={meshGroup}>
-        <mesh rotation={[0, Math.PI, 0]} ref={meshGroup}>
+      <group position={[0, -1.75, 0]} scale={1.25} ref={meshGroup}>
+        <mesh rotation={[0, 0, 0]} ref={meshGroup}>
           <EidolonBlock
             color={uniforms.uColor.value}
             roughnessMap={roughnessMap}

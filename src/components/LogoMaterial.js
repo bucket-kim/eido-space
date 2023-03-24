@@ -19,7 +19,7 @@ const LogoMaterial = (props) => {
         transmission={1}
         alphaMap={props.emissionMap}
         ior={2.42}
-        reflectivity={0.75}
+        reflectivity={0.5}
         envMapIntensity={3}
       />
       {/* <meshPhysicalMaterial

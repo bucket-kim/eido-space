@@ -69,7 +69,7 @@ const EidolonBlock = (props) => {
         castShadow
         receiveShadow
         geometry={nodes.Eidolon_Geo001_geo.geometry}
-        position={[-0.5, 0, 0]}
+        position={[0.5, 0, 0]}
         ref={block1}
       >
         <LogoMaterial
@@ -91,7 +91,7 @@ const EidolonBlock = (props) => {
         castShadow
         receiveShadow
         geometry={nodes.Eidolon_Geo002_geo.geometry}
-        position={[0.5, 0.5, 0]}
+        position={[-0.5, 0.5, 0]}
       >
         <LogoMaterial
           color={props.color}
@@ -112,7 +112,7 @@ const EidolonBlock = (props) => {
         castShadow
         receiveShadow
         geometry={nodes.Eidolon_Geo003_geo.geometry}
-        position={[-0.5, 1, 0]}
+        position={[0.5, 1, 0]}
       >
         <LogoMaterial
           color={props.color}
@@ -133,7 +133,7 @@ const EidolonBlock = (props) => {
         castShadow
         receiveShadow
         geometry={nodes.Eidolon_Geo004_geo.geometry}
-        position={[0.5, 1.5, 0]}
+        position={[-0.5, 1.5, 0]}
       >
         <LogoMaterial
           color={props.color}
@@ -154,7 +154,7 @@ const EidolonBlock = (props) => {
         castShadow
         receiveShadow
         geometry={nodes.Eidolon_Geo005_geo.geometry}
-        position={[-0.5, 2, 0]}
+        position={[0.5, 2, 0]}
       >
         <LogoMaterial
           color={props.color}
