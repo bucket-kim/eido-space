@@ -1,13 +1,15 @@
+/*eslint-disable*/
+
 import { Environment, OrbitControls } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import "../App.css";
 import * as THREE from "three";
 import Models from "./Models";
-import { Suspense, useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import SmokeBackground from "./SmokeBackground";
-import Grid from "./Grid";
-import SmokeParticle from "./SmokeParticle";
+import Liquid from "./Liquid";
+import Loading from "./Loading";
 
 const Rig = () => {
   const { camera, mouse } = useThree();
@@ -23,6 +25,7 @@ const Rig = () => {
 };
 
 const Scene = () => {
+  const [start, setStart] = useState(false);
   return (
     <>
       <div className="scene">
@@ -41,32 +44,41 @@ const Scene = () => {
             near: 0.01,
           }}
         >
+          <fog attach="fog" args={["#000000", 0, 60]} />
           <color args={[0x000000]} attach="background" />
 
-          <Suspense>
-            <Models />
-            <EffectComposer>
+          {/* <Loading /> */}
+          <Suspense fallback={null}>
+            {start && (
+              <>
+                <Models />
+                <SmokeBackground />
+                <Liquid />
+              </>
+            )}
+            {/* <EffectComposer multisampling={4}>
               <Bloom
                 luminanceThreshold={1}
                 intensity={0.25}
                 levels={9}
                 mipmapBlur
               />
-            </EffectComposer>
-            {/* <Grid /> */}
-            <SmokeBackground />
-            {/* <SmokeParticle /> */}
+            </EffectComposer> */}
+            <Environment
+              files="/images/royal_esplanade.hdr"
+              background={false}
+            />
+            <OrbitControls
+              enabled={true}
+              minPolarAngle={0}
+              maxDistance={10}
+              minDistance={2}
+            />
           </Suspense>
-          <Environment files="/images/royal_esplanade.hdr" background={false} />
-          <OrbitControls
-            enabled={true}
-            minPolarAngle={0}
-            maxDistance={10}
-            minDistance={2}
-          />
 
           {/* <Rig /> */}
         </Canvas>
+        <Loading started={start} onStarted={() => setStart(true)} />
       </div>
     </>
   );

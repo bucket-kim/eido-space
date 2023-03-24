@@ -20,7 +20,7 @@ const LogoMaterial = (props) => {
         alphaMap={props.emissionMap}
         ior={2.42}
         reflectivity={0.5}
-        envMapIntensity={3}
+        envMapIntensity={2.5}
       />
       {/* <meshPhysicalMaterial
         map={props.colorMap}

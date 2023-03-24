@@ -1,8 +1,9 @@
+/*eslint-disable*/
 import "./MainPage.css";
 import Logo from "./components/Logo";
 import Scene from "./components/Scene";
 import { TypeAnimation } from "react-type-animation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 
@@ -36,7 +37,7 @@ function Overlay(props) {
         <div className="w-full flex justify-between text-white absolute z-10 text-[12px] px-24 pt-[6em] sm:px-10 sm:pt-[2.5em]">
           <Logo />
 
-          <div className="flex flex-col items-start sm:text-[10px] w-[22em]">
+          <div className="flex flex-col items-start sm:text-[10px] w-[20em] sm:w-[16em] pl-[0.5em]">
             <TypeAnimation
               sequence={["function Welcome_to_Eidolon() {"]}
               cursor={false}
@@ -48,27 +49,27 @@ function Overlay(props) {
               cursor={false}
               wrapper={"div"}
               speed={60}
-              style={{ paddingLeft: "2em" }}
+              style={{ paddingLeft: "1em" }}
             />
             <TypeAnimation
               sequence={[3600, "In a moment, you'll enter a space"]}
               cursor={false}
               wrapper={"div"}
               speed={60}
-              style={{ paddingLeft: "4em" }}
+              style={{ paddingLeft: "2em" }}
             />
             <TypeAnimation
               sequence={[5400, "that transcends place and time"]}
               cursor={false}
               wrapper={"a"}
-              style={{ paddingLeft: "4em" }}
+              style={{ paddingLeft: "2em" }}
             />
             <TypeAnimation
               sequence={[7400, "Where works of art finds an ever-life"]}
               cursor={false}
               wrapper={"div"}
               className={""}
-              style={{ paddingLeft: "4em" }}
+              style={{ paddingLeft: "2em" }}
               speed={60}
             />
             <TypeAnimation
@@ -76,14 +77,14 @@ function Overlay(props) {
               cursor={false}
               wrapper={"div"}
               className={""}
-              style={{ paddingLeft: "4em" }}
+              style={{ paddingLeft: "2em" }}
               speed={60}
             />
             <TypeAnimation
               sequence={[11500, "We're community of creators"]}
               cursor={false}
               wrapper={"div"}
-              style={{ paddingLeft: "4em" }}
+              style={{ paddingLeft: "2em" }}
               speed={60}
             />
             <TypeAnimation
@@ -94,7 +95,7 @@ function Overlay(props) {
               cursor={false}
               wrapper={"div"}
               className={""}
-              style={{ paddingLeft: "4em" }}
+              style={{ paddingLeft: "2em" }}
               speed={80}
             />
             <TypeAnimation
@@ -102,14 +103,14 @@ function Overlay(props) {
               cursor={false}
               wrapper={"div"}
               className={""}
-              style={{ paddingLeft: "2em" }}
+              style={{ paddingLeft: "1em" }}
               speed={60}
             />
           </div>
         </div>
         <Scene />
         <motion.div
-          className="w-full text-white flex justify-between sticky bottom-0 px-24 text-[12px] z-10 sm:text-[12px] sm:px-10 
+          className="w-full text-white flex justify-between sticky bottom-0 px-24 text-[12px] z-9 sm:text-[12px] sm:px-10 
            "
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

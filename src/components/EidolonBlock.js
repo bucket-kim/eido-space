@@ -4,8 +4,8 @@ import LogoMaterial from "./LogoMaterial";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
 import gsap from "gsap";
 import * as THREE from "three";
-import vertexShader from "../shaders/material/vertex";
-import fragmentShader from "../shaders/material/fragment";
+import vertexShader from "../shaders/loading/vertex";
+import fragmentShader from "../shaders/loading/fragment";
 
 const EidolonBlock = (props) => {
   const { nodes } = useGLTF("/models/eidolon3.glb");

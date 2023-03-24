@@ -1,8 +1,9 @@
+/*eslint-disable*/
+
 import "./App.css";
 import Overlay from "./Overlay";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { useIsSmall } from "./useMediaQuery";
 
 function App() {
   const [isClicked, setIsClicked] = useState(false);

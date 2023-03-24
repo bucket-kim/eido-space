@@ -6,6 +6,7 @@ import EidolonBlock from "./EidolonBlock";
 import * as THREE from "three";
 import gsap from "gsap";
 import { Color } from "three";
+import { Bloom, EffectComposer } from "@react-three/postprocessing";
 
 const Models = (props) => {
   const meshGroup = useRef();
@@ -78,7 +79,7 @@ const Models = (props) => {
 
       if (state.size.width <= 390) {
         meshGroup.current.scale.set(0.85, 0.85, 0.85);
-        meshGroup.current.position.y = -0.5;
+        meshGroup.current.position.y = -1;
       }
 
       uniforms.uTime.value = state.clock.elapsedTime * 0.01;
