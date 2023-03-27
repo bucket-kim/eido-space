@@ -23,14 +23,16 @@
     "react-dom": "^18.2.0",
     "react-live-clock": "^6.1.5",
     "react-scripts": "5.0.1",
+    "react-teffex": "^1.0.5",
     "react-type-animation": "^2.1.2",
+    "splitting": "^1.0.6",
     "three": "^0.150.1",
     "typewriter-effect": "^2.19.0",
     "vercel": "^28.13.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

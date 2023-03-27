@@ -49,21 +49,20 @@ const Scene = () => {
 
           {/* <Loading /> */}
           <Suspense fallback={null}>
-            {start && (
-              <>
-                <Models />
-                <SmokeBackground />
-                <Liquid />
-              </>
-            )}
-            {/* <EffectComposer multisampling={4}>
+            <>
+              <Models />
+              <SmokeBackground />
+              {/* <Liquid /> */}
+            </>
+
+            <EffectComposer multisampling={4}>
               <Bloom
                 luminanceThreshold={1}
                 intensity={0.25}
                 levels={9}
                 mipmapBlur
               />
-            </EffectComposer> */}
+            </EffectComposer>
             <Environment
               files="/images/royal_esplanade.hdr"
               background={false}
@@ -78,7 +77,6 @@ const Scene = () => {
 
           {/* <Rig /> */}
         </Canvas>
-        <Loading started={start} onStarted={() => setStart(true)} />
       </div>
     </>
   );

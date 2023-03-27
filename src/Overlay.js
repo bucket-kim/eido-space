@@ -6,9 +6,12 @@ import { TypeAnimation } from "react-type-animation";
 import { Suspense, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
+import Statement from "./Statement";
+import Loading from "./components/Loading";
 
 function Overlay(props) {
   const [isHover, setIsHover] = useState(false);
+  const [start, setStart] = useState(false);
 
   useEffect(() => {
     gsap.to(".fade", {
@@ -36,76 +39,8 @@ function Overlay(props) {
       >
         <div className="w-full flex justify-between text-white absolute z-10 text-[12px] px-24 pt-[6em] sm:px-10 sm:pt-[2.5em]">
           <Logo />
-
           <div className="flex flex-col items-start sm:text-[10px] w-[20em] sm:w-[16em] pl-[0.5em]">
-            <TypeAnimation
-              sequence={["function Welcome_to_Eidolon() {"]}
-              cursor={false}
-              speed={60}
-            />
-
-            <TypeAnimation
-              sequence={[2500, "const newWorld = '"]}
-              cursor={false}
-              wrapper={"div"}
-              speed={60}
-              style={{ paddingLeft: "1em" }}
-            />
-            <TypeAnimation
-              sequence={[3600, "In a moment, you'll enter a space"]}
-              cursor={false}
-              wrapper={"div"}
-              speed={60}
-              style={{ paddingLeft: "2em" }}
-            />
-            <TypeAnimation
-              sequence={[5400, "that transcends place and time"]}
-              cursor={false}
-              wrapper={"a"}
-              style={{ paddingLeft: "2em" }}
-            />
-            <TypeAnimation
-              sequence={[7400, "Where works of art finds an ever-life"]}
-              cursor={false}
-              wrapper={"div"}
-              className={""}
-              style={{ paddingLeft: "2em" }}
-              speed={60}
-            />
-            <TypeAnimation
-              sequence={[9200, "Where you can explore, experience, and own"]}
-              cursor={false}
-              wrapper={"div"}
-              className={""}
-              style={{ paddingLeft: "2em" }}
-              speed={60}
-            />
-            <TypeAnimation
-              sequence={[11500, "We're community of creators"]}
-              cursor={false}
-              wrapper={"div"}
-              style={{ paddingLeft: "2em" }}
-              speed={60}
-            />
-            <TypeAnimation
-              sequence={[
-                12500,
-                "Building a different kind of digital and physical marketplace'",
-              ]}
-              cursor={false}
-              wrapper={"div"}
-              className={""}
-              style={{ paddingLeft: "2em" }}
-              speed={80}
-            />
-            <TypeAnimation
-              sequence={[14500, "return (newWorld) }"]}
-              cursor={false}
-              wrapper={"div"}
-              className={""}
-              style={{ paddingLeft: "1em" }}
-              speed={60}
-            />
+            <Statement />
           </div>
         </div>
         <Scene />
@@ -147,6 +82,7 @@ function Overlay(props) {
           </button>
         </motion.div>
       </motion.div>
+      {/* <Loading started={start} onStarted={() => setStart(true)} /> */}
     </>
   );
 }

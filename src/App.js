@@ -4,10 +4,10 @@ import "./App.css";
 import Overlay from "./Overlay";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import Loading from "./components/Loading";
 
 function App() {
   const [isClicked, setIsClicked] = useState(false);
-
   return (
     <div className="app__body">
       <Overlay
