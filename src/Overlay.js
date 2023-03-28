@@ -2,7 +2,6 @@
 import "./MainPage.css";
 import Logo from "./components/Logo";
 import Scene from "./components/Scene";
-import { TypeAnimation } from "react-type-animation";
 import { Suspense, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
@@ -13,6 +12,8 @@ import Timer from "./components/Timer";
 function Overlay(props) {
   const [isHover, setIsHover] = useState(false);
   const [start, setStart] = useState(false);
+
+  let login = false;
 
   useEffect(() => {
     gsap.to(".fade", {
@@ -27,7 +28,7 @@ function Overlay(props) {
   return (
     <>
       <motion.div
-        className={`h-screen`}
+        className={`h-screen text-[12px] sm:text-[10px]`}
         initial={{
           y: 0,
         }}
@@ -38,22 +39,35 @@ function Overlay(props) {
           duration: 0.2,
         }}
       >
-        <div className="w-full flex justify-between text-white absolute z-10 text-[12px] px-24 pt-[6em] sm:px-10 sm:pt-[2.5em]">
+        <div className="w-full flex justify-between text-white absolute z-10  px-24 pt-[6em] sm:px-10 sm:pt-[2.5em]">
           <Logo />
           <Statement />
         </div>
         <Scene />
         <motion.div
-          className="w-full text-white flex justify-between sticky bottom-0 px-24 text-[12px] z-9 sm:text-[12px] sm:px-10 
+          className="w-full text-white flex justify-between sticky bottom-0 px-24 z-9 sm:px-10 
            "
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
           <Timer />
 
-          <button className="pb-[3em] " onClick={props.handleClick}>
+          <form className="pb-[6em] sm:pb-[2.5em]">
+            <div className="flex flex-col items-end  border-b border-white">
+              <label for="username " className="pb-[1em]">
+                Subscribe
+              </label>
+              <input
+                className="appearance-none bg-transparent border-none w-[18em] leading-tight focus:outline-none text-right sm:w-[16em]"
+                id="username"
+                type="text"
+                placeholder="email address"
+              />
+            </div>
+          </form>
+          {/* <button className="pb-[3em] " onClick={props.handleClick}>
             Buy
-          </button>
+          </button> */}
         </motion.div>
       </motion.div>
       {/* <Loading started={start} onStarted={() => setStart(true)} /> */}
