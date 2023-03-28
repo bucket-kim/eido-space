@@ -39,7 +39,7 @@ const Timer = () => {
           setIsHover(!isHover);
         }}
         animate={{
-          y: isHover ? -6 : 26,
+          y: isHover ? -34 : 0,
         }}
         className={"cursor-pointer"}
         onTouchStart={() => {}}

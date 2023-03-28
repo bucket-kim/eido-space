@@ -45,29 +45,32 @@ function Overlay(props) {
         </div>
         <Scene />
         <motion.div
-          className="w-full text-white flex justify-between sticky bottom-0 px-24 z-9 sm:px-10 
+          className="w-full text-white flex justify-between sticky bottom-2 px-24 z-9 sm:px-10 items-end
            "
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
           <Timer />
 
-          <form className="pb-[6em] sm:pb-[2.5em]">
-            <div className="flex flex-col items-end  border-b border-white">
-              <label for="username " className="pb-[1em]">
-                Subscribe
-              </label>
-              <input
-                className="appearance-none bg-transparent border-none w-[18em] leading-tight focus:outline-none text-right sm:w-[16em]"
-                id="username"
-                type="text"
-                placeholder="email address"
-              />
-            </div>
-          </form>
-          {/* <button className="pb-[3em] " onClick={props.handleClick}>
-            Buy
-          </button> */}
+          {!login ? (
+            <form className="pb-[2.25em]">
+              <div className="flex flex-col items-end  border-b border-white">
+                <label for="username " className="pb-[1em]">
+                  Subscribe
+                </label>
+                <input
+                  className="appearance-none bg-transparent border-none w-[18em] leading-tight focus:outline-none text-right sm:w-[16em]"
+                  id="username"
+                  type="text"
+                  placeholder="email address"
+                />
+              </div>
+            </form>
+          ) : (
+            <button className="pb-[3em] " onClick={props.handleClick}>
+              Buy
+            </button>
+          )}
         </motion.div>
       </motion.div>
       {/* <Loading started={start} onStarted={() => setStart(true)} /> */}
