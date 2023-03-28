@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import Statement from "./Statement";
 import Loading from "./components/Loading";
+import Timer from "./components/Timer";
 
 function Overlay(props) {
   const [isHover, setIsHover] = useState(false);
@@ -48,33 +49,8 @@ function Overlay(props) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
-          <motion.div
-            transition={{ type: "easeInOut" }}
-            onClick={() => {
-              setIsHover(!isHover);
-            }}
-            animate={{
-              y: isHover ? -36 : 0,
-            }}
-            className={"cursor-pointer"}
-            onTouchStart={() => {}}
-          >
-            #0001
-            <div>
-              <motion.div
-                animate={{ opacity: isHover ? 1 : 0 }}
-                transition={{ duration: 0.15, type: "easeInOut" }}
-              >
-                Name of the piece
-              </motion.div>
-              <motion.div
-                animate={{ opacity: isHover ? 1 : 0 }}
-                transition={{ duration: 0.15, type: "easeInOut" }}
-              >
-                By Eidolon
-              </motion.div>
-            </div>
-          </motion.div>
+          <Timer />
+
           <button className="pb-[3em] " onClick={props.handleClick}>
             Buy
           </button>
