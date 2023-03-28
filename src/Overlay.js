@@ -39,9 +39,7 @@ function Overlay(props) {
       >
         <div className="w-full flex justify-between text-white absolute z-10 text-[12px] px-24 pt-[6em] sm:px-10 sm:pt-[2.5em]">
           <Logo />
-          <div className="flex flex-col items-start sm:text-[10px] w-[20em] sm:w-[16em] pl-[0.5em]">
-            <Statement />
-          </div>
+          <Statement />
         </div>
         <Scene />
         <motion.div
