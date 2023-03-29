@@ -2,7 +2,7 @@
 import "./MainPage.css";
 import Logo from "./components/Logo";
 import Scene from "./components/Scene";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import Statement from "./Statement";
@@ -14,9 +14,16 @@ function Overlay(props) {
   const [start, setStart] = useState(false);
   const [email, setEmail] = useState("");
 
+  const inputRef = useRef();
+
+  useEffect(() => {
+    inputRef.current.addEventListener("click", () => {
+      inputRef.current.focus();
+    });
+  }, []);
+
   const handleChange = (e) => {
     setEmail(e.target.value);
-    console.log(e.target.value);
   };
 
   let login = false;
@@ -51,7 +58,7 @@ function Overlay(props) {
         </div>
         <Scene />
         {/* <div className="h-full"></div> */}
-        <motion.div
+        <div
           className="w-full text-white flex justify-between sticky bottom-2 px-24 z-10 sm:px-10 items-end
            "
           initial={{ opacity: 0 }}
@@ -71,6 +78,7 @@ function Overlay(props) {
                   Subscribe
                 </button>
                 <input
+                  ref={inputRef}
                   className="bg-transparent border-none w-[18em] leading-tight focus:outline-none text-right sm:w-[16em]"
                   type="text"
                   placeholder="email address"
@@ -85,7 +93,7 @@ function Overlay(props) {
               Buy
             </button>
           )}
-        </motion.div>
+        </div>
       </motion.div>
       {/* <Loading started={start} onStarted={() => setStart(true)} /> */}
     </>

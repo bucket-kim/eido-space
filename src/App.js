@@ -5,6 +5,7 @@ import Overlay from "./Overlay";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Loading from "./components/Loading";
+import Footer from "./Footer";
 
 function App() {
   const [isClicked, setIsClicked] = useState(false);
@@ -18,7 +19,6 @@ function App() {
         }}
         isClicked={isClicked}
       />
-
       <motion.button
         className="  absolute bg-slate-50 w-full text-center -bottom-10 h-10 
         "
