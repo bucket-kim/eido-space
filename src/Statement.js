@@ -66,7 +66,7 @@ const Statement = (props) => {
   }, []);
 
   return (
-    <div className="flex flex-col items-end">
+    <div className="flex flex-col items-end font-NimbusSansL">
       <Glitch speed={70} dontGlitch text={"Hello…welcome to Eidolon"} />
       <div ref={textContainerRef} className="flex flex-col items-end">
         <Glitch

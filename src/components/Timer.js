@@ -32,7 +32,7 @@ const Timer = () => {
   }, []);
 
   return (
-    <div>
+    <div className="font-NimbusSansL">
       <motion.div
         transition={{ type: "easeInOut" }}
         onClick={() => {

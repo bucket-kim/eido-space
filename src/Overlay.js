@@ -53,7 +53,7 @@ function Overlay(props) {
           <Timer />
 
           {!login ? (
-            <form className="pb-[2.25em]">
+            <form className="pb-[3.25em] font-NimbusSansL">
               <div className="flex flex-col items-end  border-b border-white">
                 <label for="username " className="pb-[1em]">
                   Subscribe
