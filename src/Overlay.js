@@ -12,6 +12,12 @@ import Timer from "./components/Timer";
 function Overlay(props) {
   const [isHover, setIsHover] = useState(false);
   const [start, setStart] = useState(false);
+  const [email, setEmail] = useState("");
+
+  const handleChange = (e) => {
+    setEmail(e.target.value);
+    console.log(e.target.value);
+  };
 
   let login = false;
 
@@ -28,7 +34,7 @@ function Overlay(props) {
   return (
     <>
       <motion.div
-        className={`h-screen text-[12px] sm:text-[10px]`}
+        className={`h-screen text-[12px] sm:text-[10px] bg-black`}
         initial={{
           y: 0,
         }}
@@ -44,8 +50,9 @@ function Overlay(props) {
           <Statement />
         </div>
         <Scene />
+        {/* <div className="h-full"></div> */}
         <motion.div
-          className="w-full text-white flex justify-between sticky bottom-2 px-24 z-9 sm:px-10 items-end
+          className="w-full text-white flex justify-between sticky bottom-2 px-24 z-10 sm:px-10 items-end
            "
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -53,16 +60,23 @@ function Overlay(props) {
           <Timer />
 
           {!login ? (
-            <form className="pb-[3.25em] font-NimbusSansL">
+            <form className="pb-[3.25em] font-NimbusSansL z-20">
               <div className="flex flex-col items-end  border-b border-white">
-                <label for="username " className="pb-[1em]">
+                <button
+                  className="pb-[1em]"
+                  onClick={(e) => {
+                    e.preventDefault();
+                  }}
+                >
                   Subscribe
-                </label>
+                </button>
                 <input
-                  className="appearance-none bg-transparent border-none w-[18em] leading-tight focus:outline-none text-right sm:w-[16em]"
-                  id="username"
+                  className="bg-transparent border-none w-[18em] leading-tight focus:outline-none text-right sm:w-[16em]"
                   type="text"
                   placeholder="email address"
+                  defaultValue={email}
+                  onChange={handleChange}
+                  value={email}
                 />
               </div>
             </form>

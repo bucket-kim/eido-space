@@ -8,6 +8,8 @@ import Loading from "./components/Loading";
 
 function App() {
   const [isClicked, setIsClicked] = useState(false);
+
+  const [name, setName] = useState("");
   return (
     <div className="app__body">
       <Overlay

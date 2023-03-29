@@ -26,6 +26,7 @@ const Rig = () => {
 
 const Scene = () => {
   const [start, setStart] = useState(false);
+
   return (
     <>
       <div className="scene">
@@ -71,7 +72,7 @@ const Scene = () => {
               enabled={true}
               minPolarAngle={0}
               maxDistance={10}
-              minDistance={2}
+              minDistance={window.innerWidth > 390 ? 2.5 : 3.5}
             />
           </Suspense>
 

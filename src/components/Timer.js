@@ -10,16 +10,16 @@ const Timer = () => {
 
   useEffect(() => {
     setInterval(() => {
-      const now = new Date().getTime();
+      let now = new Date().getTime();
 
       const difference = dueDay - now;
 
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
+      let days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      let hours = Math.floor(
         (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
       );
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+      let minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
       countdownRef.current.innerHTML = `${hours < 10 ? "0" + hours : hours}:${
         minutes < 10 ? "0" + minutes : minutes
