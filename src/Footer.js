@@ -40,7 +40,6 @@ const Footer = (props) => {
               className="bg-transparent border-none w-[18em] leading-tight focus:outline-none text-right sm:w-[16em]"
               onClick={(e) => {
                 e.target.focus();
-                console.log(e);
               }}
               type="text"
               placeholder="email address"

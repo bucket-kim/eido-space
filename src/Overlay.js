@@ -24,7 +24,7 @@ function Overlay(props) {
 
   return (
     <>
-      <div className={`h-screen text-[12px] sm:text-[10px] bg-black`}>
+      <div className={`h-screen text-[12px] sm:text-[10px]`}>
         <div className="w-full flex justify-between text-white absolute z-10  px-24 pt-[6em] sm:px-10 sm:pt-[2.5em]">
           <Logo />
           <Statement />

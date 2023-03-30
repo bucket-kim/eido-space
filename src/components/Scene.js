@@ -26,59 +26,59 @@ const Rig = () => {
 
 const Scene = () => {
   const [start, setStart] = useState(false);
+  const ref = useRef();
 
+  useEffect(() => {
+    console.log(ref.current);
+  }, []);
   return (
     <>
-      <div className="scene">
-        <Canvas
-          gl={{
-            antialias: true,
-            outputEncoding: THREE.sRGBEncoding,
-            toneMappingExposure: 1.25,
-            alpha: false,
-          }}
-          shadows
-          camera={{
-            fov: 45,
-            position: [0, 1, 6],
-            far: 10000,
-            near: 0.01,
-          }}
-        >
-          <fog attach="fog" args={["#000000", 0, 60]} />
-          <color args={[0x000000]} attach="background" />
+      <Canvas
+        ref={ref}
+        gl={{
+          antialias: true,
+          outputEncoding: THREE.sRGBEncoding,
+          toneMappingExposure: 1.25,
+          alpha: false,
+        }}
+        shadows
+        camera={{
+          fov: 45,
+          position: [0, 1, 6],
+          far: 10000,
+          near: 0.01,
+        }}
+      >
+        <fog attach="fog" args={["#000000", 0, 60]} />
+        <color args={[0x000000]} attach="background" />
 
-          {/* <Loading /> */}
-          <Suspense fallback={null}>
-            <>
-              <Models />
-              <SmokeBackground />
-              {/* <Liquid /> */}
-            </>
+        {/* <Loading /> */}
+        <Suspense fallback={null}>
+          <>
+            <Models />
+            <SmokeBackground />
+            {/* <Liquid /> */}
+          </>
 
-            <EffectComposer multisampling={4}>
-              <Bloom
-                luminanceThreshold={1}
-                intensity={0.25}
-                levels={9}
-                mipmapBlur
-              />
-            </EffectComposer>
-            <Environment
-              files="/images/royal_esplanade.hdr"
-              background={false}
+          <EffectComposer multisampling={4}>
+            <Bloom
+              luminanceThreshold={1}
+              intensity={0.25}
+              levels={9}
+              mipmapBlur
             />
-            <OrbitControls
-              enabled={true}
-              minPolarAngle={0}
-              maxDistance={10}
-              minDistance={window.innerWidth > 390 ? 2.5 : 3.5}
-            />
-          </Suspense>
+          </EffectComposer>
+          <Environment files="/images/royal_esplanade.hdr" background={false} />
+          <OrbitControls
+            enabled={true}
+            minPolarAngle={0}
+            maxDistance={10}
+            minDistance={window.innerWidth > 390 ? 2.5 : 3.5}
+          />
+        </Suspense>
 
-          {/* <Rig /> */}
-        </Canvas>
-      </div>
+        {/* <Rig /> */}
+      </Canvas>
     </>
   );
 };
