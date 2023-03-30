@@ -1,50 +1,62 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import Timer from "./components/Timer";
+import React, { useEffect, useRef, useState } from "react";
+import Countdown from "./components/Countdown";
 
 const Footer = (props) => {
-  let login = false;
   const [email, setEmail] = useState("");
 
+  const inputRef = useRef();
+
   const handleChange = (e) => {
+    e.preventDefault();
     setEmail(e.target.value);
-    console.log(e.target.value);
   };
+
+  useEffect(() => {
+    inputRef.current.addEventListener("click", () => {
+      inputRef.current.focus();
+    });
+  });
+
+  let login = true;
+
   return (
     <div
-      className="w-full text-white flex justify-between sticky bottom-2 px-24 z-10 sm:px-10 items-end
-    "
+      className="w-full text-white flex justify-between absolute bottom-2 px-24 z-10 sm:px-10 items-end text-[12px] sm:text-[10px] sm:bottom-0 
+     "
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
     >
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-        <Timer />
+      <Countdown />
 
-        {!login ? (
-          <form className="pb-[3.25em] font-NimbusSansL z-20">
-            <div className="flex flex-col items-end  border-b border-white">
-              <button
-                className="pb-[1em]"
-                onClick={(e) => {
-                  e.preventDefault();
-                }}
-              >
-                Subscribe
-              </button>
-              <input
-                className="bg-transparent border-none w-[18em] leading-tight focus:outline-none text-right sm:w-[16em]"
-                type="text"
-                placeholder="email address"
-                defaultValue={email}
-                onChange={handleChange}
-                value={email}
-              />
-            </div>
-          </form>
-        ) : (
-          <button className="pb-[3em] " onClick={props.handleClick}>
-            Buy
-          </button>
-        )}
-      </motion.div>
+      {!login ? (
+        <button className="pb-[3em] " onClick={props.handleClick}>
+          Buy
+        </button>
+      ) : (
+        <form className="pb-[3em] font-NimbusSansL z-20 sticky">
+          <div className="flex flex-col items-end  border-b border-white">
+            <button
+              className="pb-[1em]"
+              onClick={(e) => {
+                e.preventDefault();
+              }}
+            >
+              Subscribe
+            </button>
+            <input
+              ref={inputRef}
+              className="bg-transparent border-none w-[18em] leading-tight focus:outline-none text-right sm:w-[16em]"
+              onClick={(e) => {
+                return e.preventDefault();
+              }}
+              type="text"
+              placeholder="email address"
+              onChange={handleChange}
+              value={email}
+            />
+          </div>
+        </form>
+      )}
     </div>
   );
 };

@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-const Timer = () => {
+const Countdown = () => {
   const [isHover, setIsHover] = useState(false);
   const countdownRef = useRef();
 
@@ -32,7 +32,7 @@ const Timer = () => {
   }, []);
 
   return (
-    <div className="font-NimbusSansL">
+    <div className="font-NimbusSansL sticky">
       <motion.div
         transition={{ type: "easeInOut" }}
         onClick={() => {
@@ -44,7 +44,7 @@ const Timer = () => {
         className={"cursor-pointer"}
         onTouchStart={() => {}}
       >
-        <p ref={countdownRef}></p>
+        <span ref={countdownRef} id="show__time"></span>
         <div>
           <motion.div
             animate={{ opacity: isHover ? 1 : 0 }}
@@ -59,4 +59,4 @@ const Timer = () => {
   );
 };
 
-export default Timer;
+export default Countdown;
