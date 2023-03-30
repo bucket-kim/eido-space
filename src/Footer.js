@@ -11,14 +11,6 @@ const Footer = (props) => {
     setEmail(e.target.value);
   };
 
-  useEffect(() => {
-    inputRef.current.addEventListener("click", () => {
-      inputRef.current.focus();
-    });
-  });
-
-  let login = true;
-
   return (
     <div
       className="w-full text-white flex justify-between absolute bottom-2 px-24 z-10 sm:px-10 items-end text-[12px] sm:text-[10px] sm:bottom-0 
@@ -28,7 +20,7 @@ const Footer = (props) => {
     >
       <Countdown />
 
-      {!login ? (
+      {props.login ? (
         <button className="pb-[3em] " onClick={props.handleClick}>
           Buy
         </button>
@@ -47,7 +39,8 @@ const Footer = (props) => {
               ref={inputRef}
               className="bg-transparent border-none w-[18em] leading-tight focus:outline-none text-right sm:w-[16em]"
               onClick={(e) => {
-                return e.preventDefault();
+                e.target.focus();
+                console.log(e);
               }}
               type="text"
               placeholder="email address"

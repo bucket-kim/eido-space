@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 
 const Countdown = () => {
   const [isHover, setIsHover] = useState(false);
-  const countdownRef = useRef();
 
   const dueDay = new Date("Jun 1, 2023 00:00:00").getTime();
 
@@ -21,12 +20,14 @@ const Countdown = () => {
       let minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
       let seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-      countdownRef.current.innerHTML = `${hours < 10 ? "0" + hours : hours}:${
-        minutes < 10 ? "0" + minutes : minutes
-      }:${seconds < 10 ? "0" + seconds : seconds}`;
+      document.getElementById("show__time").innerHTML = `${
+        hours < 10 ? "0" + hours : hours
+      }:${minutes < 10 ? "0" + minutes : minutes}:${
+        seconds < 10 ? "0" + seconds : seconds
+      }`;
 
-      if (seconds + "".length === 1) {
-        seconds = "0" + seconds;
+      if (difference < 0) {
+        document.getElementById("show__time").innerHTML = "Expired";
       }
     });
   }, []);
@@ -44,7 +45,7 @@ const Countdown = () => {
         className={"cursor-pointer"}
         onTouchStart={() => {}}
       >
-        <span ref={countdownRef} id="show__time"></span>
+        <span id="show__time"></span>
         <div>
           <motion.div
             animate={{ opacity: isHover ? 1 : 0 }}

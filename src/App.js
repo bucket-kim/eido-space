@@ -10,6 +10,8 @@ import Footer from "./Footer";
 function App() {
   const [isClicked, setIsClicked] = useState(false);
 
+  const [login, setLogin] = useState(false);
+
   return (
     <>
       <motion.div
@@ -30,23 +32,27 @@ function App() {
             e.preventDefault();
             setIsClicked(!isClicked);
           }}
+          login={login}
         />
       </motion.div>
-      <motion.button
-        className="  absolute bg-slate-50 w-full text-center -bottom-10 h-10 
+
+      {login ? (
+        <motion.button
+          className="  absolute bg-slate-50 w-full text-center -bottom-10 h-10 
         "
-        initial={{
-          y: 0,
-        }}
-        animate={{
-          y: isClicked ? -40 : 0,
-        }}
-        transition={{
-          duration: 0.2,
-        }}
-      >
-        Connect to Wallet
-      </motion.button>
+          initial={{
+            y: 0,
+          }}
+          animate={{
+            y: isClicked ? -40 : 0,
+          }}
+          transition={{
+            duration: 0.2,
+          }}
+        >
+          Connect to Wallet
+        </motion.button>
+      ) : null}
     </>
   );
 }

@@ -30,7 +30,6 @@ function Overlay(props) {
           <Statement />
         </div>
         <Scene />
-        {/* <div className="h-full"></div> */}
       </div>
       {/* <Loading started={start} onStarted={() => setStart(true)} /> */}
     </>
