@@ -1,3 +1,5 @@
+/*eslint-disable */
+
 import React, { useEffect, useRef, useState } from "react";
 import Countdown from "./components/Countdown";
 
@@ -25,17 +27,19 @@ const Footer = (props) => {
           Buy
         </button>
       ) : (
-        <form className="pb-[3em] font-NimbusSansL z-20 sticky">
-          <div className="flex flex-col items-end  border-b border-white">
-            <button
-              className="pb-[1em]"
-              onClick={(e) => {
-                e.preventDefault();
-              }}
-            >
-              Subscribe
-            </button>
-            <input
+        <form
+          className="pb-[2em] font-NimbusSansL z-20 sticky"
+          action="https://forms.gle/bzC1kKzUoLRp8gtz8"
+        >
+          <button
+            className="hover:bg-white hover:text-black p-[1em] duration-200"
+            // onClick={(e) => {
+            //   e.preventDefault();
+            // }}
+          >
+            Subscribe
+          </button>
+          {/* <input
               ref={inputRef}
               className="bg-transparent border-none w-[18em] leading-tight focus:outline-none text-right sm:w-[16em]"
               onClick={(e) => {
@@ -45,8 +49,7 @@ const Footer = (props) => {
               placeholder="email address"
               onChange={handleChange}
               value={email}
-            />
-          </div>
+            /> */}
         </form>
       )}
     </div>

@@ -1,5 +1,6 @@
 {
   "name": "eido-space",
+  "homepage": "http://Eidolon.Space.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
