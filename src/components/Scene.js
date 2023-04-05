@@ -26,15 +26,9 @@ const Rig = () => {
 
 const Scene = () => {
   const [start, setStart] = useState(false);
-  const ref = useRef();
-
-  useEffect(() => {
-    console.log(ref.current);
-  }, []);
   return (
     <>
       <Canvas
-        ref={ref}
         gl={{
           antialias: true,
           outputEncoding: THREE.sRGBEncoding,

@@ -35,72 +35,72 @@ const Statement = (props) => {
       glitchRef1.current.style = {
         opacity: setShow(1),
       };
-    }, 3500);
+    }, 2000);
     setTimeout(() => {
       glitchRef2.current.style = {
         opacity: setShow(1),
       };
-    }, 7000);
+    }, 4000);
     setTimeout(() => {
       glitchRef3.current.style = {
         opacity: setShow(1),
       };
-    }, 9500);
+    }, 6000);
     setTimeout(() => {
       glitchRef4.current.style = {
         opacity: setShow(1),
       };
-    }, 13000);
+    }, 8000);
     setTimeout(() => {
       glitchRef5.current.style = {
         opacity: setShow(1),
       };
-    }, 15000);
+    }, 10000);
 
     textContainerRef.current.style.opacity = 1;
 
     gsap.to(textContainerRef.current.style, {
       opacity: 0.2,
-      delay: 16.5,
+      delay: 11,
     });
   }, []);
 
   return (
     <div className="flex flex-col items-end font-NimbusSansL w-full text-right">
-      <Glitch speed={70} dontGlitch text={"Hello…welcome to Eidolon"} />
+      <Glitch speed={35} dontGlitch text={"Hello…welcome to Eidolon"} />
       <div ref={textContainerRef} className="flex flex-col items-end sm:w-1/2">
         <Glitch
           ref={glitchRef1}
-          speed={55}
-          buffer={40}
+          speed={35}
+          buffer={35}
           dontGlitch
           text={"This is a space that transcends place and time"}
         />
         <Glitch
           ref={glitchRef2}
-          speed={55}
-          buffer={95}
+          speed={35}
+          buffer={70}
           dontGlitch
           text={"Where art finds an ever-life"}
         />
         <Glitch
           ref={glitchRef3}
-          speed={50}
-          buffer={135}
+          speed={35}
+          buffer={105}
           dontGlitch
           text={"Where you can explore and experience exclusive creations"}
         />
         <Glitch
           ref={glitchRef4}
-          speed={60}
-          buffer={180}
+          speed={35}
+          buffer={140}
           dontGlitch
           text={"Come, click around"}
         />
         <Glitch
           ref={glitchRef5}
-          speed={60}
-          buffer={210}
+          speed={35}
+          buffer={175}
           dontGlitch
           text={"See what moves you"}
         />

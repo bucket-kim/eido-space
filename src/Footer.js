@@ -2,16 +2,10 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Countdown from "./components/Countdown";
+import Axios from "axios";
 
 const Footer = (props) => {
   const [email, setEmail] = useState("");
-
-  const inputRef = useRef();
-
-  const handleChange = (e) => {
-    e.preventDefault();
-    setEmail(e.target.value);
-  };
 
   return (
     <div
@@ -22,36 +16,39 @@ const Footer = (props) => {
     >
       <Countdown />
 
-      {props.login ? (
+      {/* {props.login ? (
         <button className="pb-[3em] " onClick={props.handleClick}>
           Buy
         </button>
       ) : (
-        <form
-          className="pb-[2em] font-NimbusSansL z-20 sticky"
-          action="https://forms.gle/bzC1kKzUoLRp8gtz8"
-        >
-          <button
-            className="hover:bg-white hover:text-black p-[1em] duration-200"
-            // onClick={(e) => {
-            //   e.preventDefault();
-            // }}
+        <div className="pb-[3em]">
+          <form
+            className="border-b-2 font-NimbusSansL z-20 sticky flex flex-col items-end"
+            onSubmit={handleSubmit}
+            onClick={(e) => {
+              e.preventDefault();
+            }}
           >
-            Subscribe
-          </button>
-          {/* <input
-              ref={inputRef}
-              className="bg-transparent border-none w-[18em] leading-tight focus:outline-none text-right sm:w-[16em]"
+            <button
+              className="pb-[1.5em]"
+              onClick={(e) => {
+                e.preventDefault();
+              }}
+            >
+              Subscribe
+            </button>
+            <input
+              className="bg-transparent border-none w-[18em] leading-tight focus:outline-none text-right sm:w-[16em] "
               onClick={(e) => {
                 e.target.focus();
               }}
               type="text"
               placeholder="email address"
               onChange={handleChange}
-              value={email}
-            /> */}
-        </form>
-      )}
+            />
+          </form>
+        </div>
+      )} */}
     </div>
   );
 };
