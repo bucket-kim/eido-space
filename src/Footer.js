@@ -2,10 +2,35 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Countdown from "./components/Countdown";
-import Axios from "axios";
+import axios from "axios";
 
 const Footer = (props) => {
   const [email, setEmail] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const postURL = "http://localhost:4000/api/email/";
+    fetch(postURL, {
+      method: "POST",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        dates: [],
+      }),
+    })
+      .then(() => {
+        alert("You are now Subscribed to Eidolon Space!");
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setEmail(e.target.value);
+  };
 
   return (
     <div
@@ -16,7 +41,7 @@ const Footer = (props) => {
     >
       <Countdown />
 
-      {/* {props.login ? (
+      {props.login ? (
         <button className="pb-[3em] " onClick={props.handleClick}>
           Buy
         </button>
@@ -24,17 +49,10 @@ const Footer = (props) => {
         <div className="pb-[3em]">
           <form
             className="border-b-2 font-NimbusSansL z-20 sticky flex flex-col items-end"
+            action="POST"
             onSubmit={handleSubmit}
-            onClick={(e) => {
-              e.preventDefault();
-            }}
           >
-            <button
-              className="pb-[1.5em]"
-              onClick={(e) => {
-                e.preventDefault();
-              }}
-            >
+            <button className="pb-[1.5em]" type="submit">
               Subscribe
             </button>
             <input
@@ -48,7 +66,7 @@ const Footer = (props) => {
             />
           </form>
         </div>
-      )} */}
+      )}
     </div>
   );
 };
