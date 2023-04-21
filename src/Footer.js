@@ -1,30 +1,55 @@
 /*eslint-disable */
-
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import Countdown from "./components/Countdown";
-import axios from "axios";
 
 const Footer = (props) => {
   const [email, setEmail] = useState("");
 
-  const handleSubmit = (e) => {
+  const [error, setError] = useState("");
+
+  const date = new Date();
+
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+
+  if (day < 10) {
+    day = "0" + day;
+  }
+
+  if (month < 10) {
+    month = "0" + month;
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const postURL = "http://localhost:4000/api/email/";
-    fetch(postURL, {
+    const postURL = "http://localhost:4000/email/";
+
+    fetch(await postURL, {
       method: "POST",
       headers: {
         "Accept": "application/json",
         "Content-Type": "application/json",
+        "Access-Control-Alow-Origin": "*",
       },
       body: JSON.stringify({
         email: email,
-        dates: [],
+        dates: `${year}/${month}/${day}`,
       }),
     })
-      .then(() => {
+      .then((response) => {
+        if (!response.ok) {
+          console.log(response);
+        }
+        return response.json();
+      })
+      .then((email) => {
         alert("You are now Subscribed to Eidolon Space!");
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        alert(err);
+        // throw Error(err);
+      });
   };
 
   const handleChange = (e) => {
@@ -33,20 +58,53 @@ const Footer = (props) => {
   };
 
   return (
+    // <div
+    //   className="w-full text-white flex justify-between absolute bottom-2 px-24 z-10 sm:px-10 items-end text-[12px] sm:text-[10px] sm:bottom-0
+    //  "
+    // >
+    //   <Countdown />
+
+    //   {props.login ? (
+    //     <button className="pb-[3em] " onClick={props.handleClick}>
+    //       Buy
+    //     </button>
+    //   ) : (
+    //     <div className="pb-[3em]">
+    //       <form
+    //         className="border-b-2 font-NimbusSansL z-20 sticky flex flex-col items-end"
+    //         action="POST"
+    //         onSubmit={handleSubmit}
+    //       >
+    //         <button className="pb-[1.5em]" type="submit">
+    //           Subscribe
+    //         </button>
+    //         <input
+    //           className="bg-transparent border-none w-[18em] leading-tight focus:outline-none text-right sm:w-[16em] "
+    //           onClick={(e) => {
+    //             e.target.focus();
+    //           }}
+    //           type="text"
+    //           placeholder="email address"
+    //           onChange={handleChange}
+    //         />
+    //       </form>
+    //     </div>
+    //   )}
+    // </div>
     <div
-      className="w-full text-white flex justify-between absolute bottom-2 px-24 z-10 sm:px-10 items-end text-[12px] sm:text-[10px] sm:bottom-0 
-     "
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      className="w-full text-white flex justify-between
+   "
     >
-      <Countdown />
+      <div className="absolute bottom-2 px-24 z-10 sm:px-10 items-end text-[12px] sm:text-[10px] sm:bottom-0">
+        <Countdown />
+      </div>
 
       {props.login ? (
         <button className="pb-[3em] " onClick={props.handleClick}>
           Buy
         </button>
       ) : (
-        <div className="pb-[3em]">
+        <div className="absolute top-[12em] right-0 px-24 z-10 sm:px-10 items-end text-[12px] sm:text-[10px] sm:bottom-0">
           <form
             className="border-b-2 font-NimbusSansL z-20 sticky flex flex-col items-end"
             action="POST"

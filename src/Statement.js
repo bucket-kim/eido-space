@@ -35,27 +35,27 @@ const Statement = (props) => {
       glitchRef1.current.style = {
         opacity: setShow(1),
       };
-    }, 2000);
+    }, 4000);
     setTimeout(() => {
       glitchRef2.current.style = {
         opacity: setShow(1),
       };
-    }, 4000);
+    }, 5500);
     setTimeout(() => {
       glitchRef3.current.style = {
         opacity: setShow(1),
       };
-    }, 6000);
+    }, 6500);
     setTimeout(() => {
       glitchRef4.current.style = {
         opacity: setShow(1),
       };
-    }, 8000);
+    }, 8500);
     setTimeout(() => {
       glitchRef5.current.style = {
         opacity: setShow(1),
       };
-    }, 10000);
+    }, 9500);
 
     textContainerRef.current.style.opacity = 1;
 
@@ -67,19 +67,24 @@ const Statement = (props) => {
 
   return (
     <div className="flex flex-col items-end font-NimbusSansL w-full text-right">
-      <Glitch speed={35} dontGlitch text={"Hello…welcome to Eidolon"} />
+      <Glitch
+        speed={35}
+        dontGlitch
+        text={"Hello…welcome to Eidolon"}
+        buffer={10}
+      />
       <div ref={textContainerRef} className="flex flex-col items-end sm:w-1/2">
         <Glitch
           ref={glitchRef1}
           speed={35}
-          buffer={35}
+          buffer={45}
           dontGlitch
           text={"This is a space that transcends place and time"}
         />
         <Glitch
           ref={glitchRef2}
           speed={35}
-          buffer={70}
+          buffer={75}
           dontGlitch
           text={"Where art finds an ever-life"}
         />
