@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "grunt build"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +16,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "grunt": "^1.6.1",
     "joi": "^17.9.1",
     "joi-password-complexity": "^5.1.0",
     "jsonwebtoken": "^9.0.0",
