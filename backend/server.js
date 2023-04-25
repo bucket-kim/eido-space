@@ -81,6 +81,7 @@ app.post("/email", async (req, res) => {
     res.status(201).send({ message: "Success" });
   } catch (err) {
     res.status(400).send(err.message);
+    res.status(409).send(err.message);
   }
 });
 

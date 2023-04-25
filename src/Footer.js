@@ -1,11 +1,26 @@
 /*eslint-disable */
 import React, { useState } from "react";
 import Countdown from "./components/Countdown";
+import Message from "./Message";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Footer = (props) => {
   const [email, setEmail] = useState("");
 
-  const [error, setError] = useState("");
+  const [click, setClick] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const variants = {
+    initial: {
+      opacity: 0,
+    },
+    open: {
+      opacity: 1,
+    },
+    close: {
+      opacity: 0,
+    },
+  };
 
   const date = new Date();
 
@@ -38,18 +53,18 @@ const Footer = (props) => {
       }),
     })
       .then((response) => {
-        if (!response.ok) {
-          console.log(response);
-        }
         return response.json();
       })
       .then((email) => {
-        alert("You are now Subscribed to Eidolon Space!");
+        // alert("You are now Subscribed to Eidolon Space!");
+        setMessage("You are now Subscribed to Eidolon Space!");
+        setEmail("");
       })
       .catch((err) => {
-        alert(err);
-        // throw Error(err);
+        setMessage("Something went wrong.");
+        setEmail("");
       });
+    setClick(true);
   };
 
   const handleChange = (e) => {
@@ -92,18 +107,35 @@ const Footer = (props) => {
     //   )}
     // </div>
     <div
-      className="w-full text-white flex justify-between
+      className="w-full h-screen text-white flex justify-between
    "
     >
+      <div className="absolute bottom-1/2 left-1/2"></div>
       <div className="absolute bottom-2 px-24 z-10 sm:px-10 items-end text-[12px] sm:text-[10px] sm:bottom-0">
         <Countdown />
       </div>
-
+      {/* 
       {props.login ? (
         <button className="pb-[3em] " onClick={props.handleClick}>
           Buy
         </button>
-      ) : (
+      ) : ( */}
+      <>
+        {/* {click && ( */}
+        <AnimatePresence>
+          <motion.div
+            variants={variants}
+            initial={"initial"}
+            animate={click ? "open" : "close"}
+          >
+            <Message
+              message={message}
+              setClick={() => setClick((click) => !click)}
+            />
+          </motion.div>
+        </AnimatePresence>
+        {/* )} */}
+
         <div className="absolute top-[12em] right-0 px-24 z-10 sm:px-10 items-end text-[12px] sm:text-[10px] sm:bottom-0">
           <form
             className="border-b-2 font-NimbusSansL z-20 sticky flex flex-col items-end"
@@ -118,13 +150,15 @@ const Footer = (props) => {
               onClick={(e) => {
                 e.target.focus();
               }}
+              value={email}
               type="text"
               placeholder="email address"
               onChange={handleChange}
             />
           </form>
         </div>
-      )}
+      </>
+      {/* )} */}
     </div>
   );
 };
