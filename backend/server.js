@@ -87,6 +87,6 @@ app.post("/email", async (req, res) => {
 
 app.use(errorController);
 
-app.listen(port, () => {
+app.listen(process.env.PORT, () => {
   console.log(`App listening at ${port}`);
 });
