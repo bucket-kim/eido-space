@@ -38,7 +38,7 @@ const Footer = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const postURL = "http://localhost:4000/email/";
+    const postURL = "https://eidolon-backend.onrender.com";
 
     fetch(await postURL, {
       method: "POST",
@@ -58,11 +58,9 @@ const Footer = (props) => {
       .then((email) => {
         // alert("You are now Subscribed to Eidolon Space!");
         setMessage("You are now Subscribed to Eidolon Space!");
-        setEmail("");
       })
       .catch((err) => {
         setMessage("Something went wrong.");
-        setEmail("");
       });
     setClick(true);
   };
