@@ -45,7 +45,7 @@ const Footer = (props) => {
       headers: {
         "Accept": "application/json",
         "Content-Type": "application/json",
-        "Access-Control-Alow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify({
         email: email,
