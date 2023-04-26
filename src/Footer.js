@@ -38,7 +38,7 @@ const Footer = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const postURL = "https://eidolon-backend.onrender.com";
+    const postURL = `${process.env.APP_SERVER_URL}`;
 
     fetch(await postURL, {
       method: "POST",
