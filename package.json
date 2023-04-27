@@ -30,6 +30,7 @@
     "react": "^18.2.0",
     "react-countdown": "^2.3.5",
     "react-dom": "^18.2.0",
+    "react-dotenv": "^0.1.3",
     "react-live-clock": "^6.1.5",
     "react-scripts": "5.0.1",
     "react-teffex": "^1.0.5",
@@ -64,6 +65,11 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "react-dotenv": {
+    "whitelist": [
+      "APP_SERVER_URL"
     ]
   },
   "devDependencies": {

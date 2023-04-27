@@ -1,4 +1,5 @@
 /*eslint-disable */
+import env from "react-dotenv";
 import React, { useState } from "react";
 import Countdown from "./components/Countdown";
 import Message from "./Message";
@@ -35,8 +36,9 @@ const Footer = (props) => {
   if (month < 10) {
     month = "0" + month;
   }
-  const postURL = "http://localhost:4000/email";
-  // const postURL = `${process.env.APP_SERVER_URL}`;
+  // const postURL = "http://localhost:4000/email";
+  const postURL = "https://eidolon-backend.onrender.com/email/";
+  // const postURL = env.APP_SERVER_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
