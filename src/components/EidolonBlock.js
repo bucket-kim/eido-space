@@ -1,11 +1,8 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+/*eslint-disable*/
+import React, { useMemo, useRef, useState } from "react";
 import { useGLTF } from "@react-three/drei";
 import LogoMaterial from "./LogoMaterial";
-import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
-import gsap from "gsap";
 import * as THREE from "three";
-import vertexShader from "../shaders/loading/vertex";
-import fragmentShader from "../shaders/loading/fragment";
 
 const EidolonBlock = (props) => {
   const { nodes } = useGLTF("/models/eidolon3.glb");
@@ -39,24 +36,6 @@ const EidolonBlock = (props) => {
   );
 
   diffuse.flipY = false;
-
-  const uniforms = useMemo(
-    () => ({
-      uBaseColor: {
-        value: diffuse,
-      },
-      uSpecMap: {
-        value: backgroundHDRI,
-      },
-      uRoughness: {
-        value: roughness,
-      },
-      uNormal: {
-        value: normal,
-      },
-    }),
-    []
-  );
 
   return (
     <group

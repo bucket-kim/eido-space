@@ -16,24 +16,16 @@ const Models = (props) => {
 
   const [colorMap, normalMap, roughnessMap, metalnessMap, heightMap] =
     useTexture([
-      "/images/crystal/eidolon_Emissive.png",
-      "/images/crystal/eidolon_Normal.png",
-      "/images/crystal/eidolon_Roughness.png",
-      "/images/crystal/eidolon_Metalness.png",
-      "/images/crystal/eidolon_Height.png",
+      "images/crystal/eidolon_Emissive.png",
+      "images/crystal/eidolon_Normal.png",
+      "images/crystal/eidolon_Roughness.png",
+      "images/crystal/eidolon_Metalness.png",
+      "images/crystal/eidolon_Height.png",
     ]);
-
-  // const [colorMap, normalMap, roughnessMap, heightMap] = useTexture([
-  //   "/images/ceramic/ceramic_BaseColor.png",
-  //   "/images/ceramic/ceramic_Normal.png",
-  //   "/images/ceramic/ceramic_Roughness.png",
-  //   "/images/ceramic/ceramic_Height.png",
-  // ]);
 
   colorMap.flipY = false;
   normalMap.flipY = false;
   roughnessMap.flipY = false;
-  // metalnessMap.flipY = false;
   heightMap.flipY = false;
 
   colorMap.encoding = THREE.sRGBEncoding;
