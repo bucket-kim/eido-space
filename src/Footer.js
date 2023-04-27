@@ -41,12 +41,13 @@ const Footer = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    fetch(await postURL, {
+    await fetch(postURL, {
       method: "POST",
       headers: {
         "Accept": "application/json",
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
       },
       body: JSON.stringify({
         email: email,
@@ -57,7 +58,7 @@ const Footer = (props) => {
         if (response.ok) {
           return response.json();
         } else {
-          throw new Error("Something went wrong");
+          throw new Error("Something is wrong.");
         }
       })
       .then((email) => {
