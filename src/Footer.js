@@ -35,8 +35,8 @@ const Footer = (props) => {
   if (month < 10) {
     month = "0" + month;
   }
-  // const postURL = "http://localhost:4000/email";
-  const postURL = `${process.env.APP_SERVER_URL}`;
+  const postURL = "http://localhost:4000/email";
+  // const postURL = `${process.env.APP_SERVER_URL}`;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -64,9 +64,11 @@ const Footer = (props) => {
       .then((email) => {
         // alert("You are now Subscribed to Eidolon Space!");
         setMessage("You are now Subscribed to Eidolon Space!");
+        setEmail("");
       })
       .catch((err) => {
         setMessage("Something went wrong.");
+        setEmail("");
       });
     setClick(true);
   };
