@@ -146,7 +146,7 @@ const Footer = (props) => {
           </motion.div>
         </AnimatePresence>
 
-        <div className="absolute bottom-10 right-0 px-24 z-10 sm:px-10 items-end text-[12px] sm:text-[10px] sm:bottom-6">
+        <div className="absolute bottom-10 right-0 px-24 z-10 sm:px-10 items-end text-[12px] sm:text-[10px] sm:bottom-8">
           <form
             ref={formRef}
             className="border-b-2 font-NimbusSansL z-20 sticky flex flex-col items-end"

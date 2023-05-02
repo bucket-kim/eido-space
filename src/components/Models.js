@@ -58,15 +58,10 @@ const Models = (props) => {
         e.preventDefault();
         setOnTap(true);
       });
-      window.addEventListener(
-        "touchstart",
-        (e) => {
-          e.preventDefault();
-
-          setOnTap(true);
-        },
-        { passive: false }
-      );
+      window.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        setOnTap(true);
+      });
       window.addEventListener("mouseup", () => {
         setOnTap(false);
       });
