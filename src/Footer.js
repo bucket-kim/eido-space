@@ -1,6 +1,5 @@
 /*eslint-disable */
-import env from "react-dotenv";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Countdown from "./components/Countdown";
 import Message from "./Message";
 import { AnimatePresence, motion } from "framer-motion";
@@ -11,15 +10,20 @@ const Footer = (props) => {
   const [click, setClick] = useState(false);
   const [message, setMessage] = useState("");
 
+  const formRef = useRef();
+
   const variants = {
     initial: {
       opacity: 0,
+      display: "none",
     },
     open: {
       opacity: 1,
+      display: "flex",
     },
     close: {
       opacity: 0,
+      display: "none",
     },
   };
 
@@ -118,7 +122,6 @@ const Footer = (props) => {
       className="w-full h-screen text-white flex justify-between
    "
     >
-      <div className="absolute bottom-1/2 left-1/2"></div>
       <div className="absolute bottom-2 px-24 z-10 sm:px-10 items-end text-[12px] sm:text-[10px] sm:bottom-0">
         <Countdown />
       </div>
@@ -129,7 +132,6 @@ const Footer = (props) => {
         </button>
       ) : ( */}
       <>
-        {/* {click && ( */}
         <AnimatePresence>
           <motion.div
             variants={variants}
@@ -139,16 +141,18 @@ const Footer = (props) => {
             <Message
               message={message}
               setClick={() => setClick((click) => !click)}
+              setTouch={() => setClick((click) => !click)}
             />
           </motion.div>
         </AnimatePresence>
-        {/* )} */}
 
-        <div className="absolute top-[12em] right-0 px-24 z-10 sm:px-10 items-end text-[12px] sm:text-[10px] sm:bottom-0">
+        <div className="absolute bottom-10 right-0 px-24 z-10 sm:px-10 items-end text-[12px] sm:text-[10px] sm:bottom-6">
           <form
+            ref={formRef}
             className="border-b-2 font-NimbusSansL z-20 sticky flex flex-col items-end"
             action="POST"
             onSubmit={handleSubmit}
+            onTouchStart={handleSubmit}
           >
             <button className="pb-[1.5em]" type="submit">
               Subscribe

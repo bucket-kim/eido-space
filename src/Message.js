@@ -11,6 +11,7 @@ const Message = ({ ...props }) => {
         <h1 className="text-l">{props.message}</h1>
         <button
           onClick={props.setClick}
+          onTouchStart={props.setTouch}
           className="border-2 border-white mt-8 p-2 text-[12px]"
         >
           Close
