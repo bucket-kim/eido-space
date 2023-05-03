@@ -154,7 +154,6 @@ const Footer = (props) => {
             className="border-b-2 font-NimbusSansL z-20 sticky flex flex-col items-end"
             action="POST"
             onSubmit={handleSubmit}
-            onTouchStart={handleSubmit}
           >
             <button className="pb-[1.5em]" type="submit">
               Subscribe
