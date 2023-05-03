@@ -41,20 +41,22 @@ const Footer = (props) => {
     month = "0" + month;
   }
   // const postURL = "http://localhost:4000/email";
-  const postURL = "https://eidolon-backend.onrender.com/email/";
-  // const postURL = env.APP_SERVER_URL;
+  const postURL = "https://eidolon-backend.onrender.com/email";
+  // const postURL = process.env.APP_SERVER_URL;
+
+  const headers = {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST,PATCH,OPTIONS",
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     await fetch(postURL, {
       method: "POST",
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
-      },
+      mode: "cors",
+      headers: headers,
       body: JSON.stringify({
         email: email,
         dates: `${year}/${month}/${day}`,
