@@ -159,7 +159,7 @@ const Footer = (props) => {
               Subscribe
             </button>
             <input
-              className="bg-transparent border-none w-[18em] leading-tight focus:outline-none text-right sm:w-[16em] "
+              className="bg-transparent border-none w-[18em] leading-tight focus:outline-none focus:bg-transparent text-right sm:w-[16em] "
               onClick={(e) => {
                 e.target.focus();
               }}
